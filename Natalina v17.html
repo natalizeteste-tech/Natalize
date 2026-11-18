@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<!-- Natalize v16 (HTML e SQL) -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Natalize</title>
+<meta name="app-version" content="v16">
+<meta name="theme-color" content="#3e6b55">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Natalize">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,600&family=Literata:wght@400;600&family=Nunito+Sans:wght@400;700&display=swap">
+<style>
+:root{--bg:#f7ede4;--card:#fffaf5;--ink:#2d4a3b;--mute:#6b7d70;--pine:#3e6b55;--sage:#8db097;--cin:#a5683c;--can:#ebd0b8;--line:#e6d4c4;--on:#fff;--fs:18px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0)}
+:root[data-theme=sepia]{--bg:#f1e4cf;--card:#f8eedc;--ink:#3b2f22;--mute:#7a6a55;--can:#e2cfb0;--line:#dcc9a8}
+:root[data-theme=dark]{--bg:#1a2520;--card:#23312a;--ink:#eee3d6;--mute:#a6b5a9;--pine:#8db097;--sage:#5d8570;--cin:#d19a6d;--can:#3a4a40;--line:#34463b;--on:#16211b}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Nunito Sans",system-ui,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.logo{font:700 28px "Cormorant Garamond",Georgia,serif;color:var(--pine);text-decoration:none;letter-spacing:.5px}
+nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+nav a,nav button{background:none;border:0;color:var(--ink);font:700 14px "Nunito Sans",sans-serif;padding:8px 9px;border-radius:8px;text-decoration:none;cursor:pointer}
+nav a:hover,nav button:hover{background:var(--can)}
+main{max-width:780px;margin:0 auto;padding:20px 16px 70px}
+h1{font:700 32px/1.15 "Cormorant Garamond",Georgia,serif;margin:6px 0 10px;color:var(--pine)}
+h2{font:700 23px "Cormorant Garamond",Georgia,serif;margin:26px 0 10px}
+.sub,small{color:var(--mute)}small{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px}
+label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}
+input,textarea,select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+textarea{min-height:90px}
+.btn{display:inline-block;background:var(--pine);color:var(--on);border:0;border-radius:10px;padding:11px 18px;font:700 15px "Nunito Sans",sans-serif;text-decoration:none;cursor:pointer;margin:10px 8px 0 0}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.sm,.sm{padding:6px 11px;margin:0}
+.btn.red{color:var(--cin)}
+.empty{color:var(--mute);text-align:center;padding:22px 6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px}
+.bk{text-decoration:none;color:var(--ink)}.bk b{display:block;margin-top:8px;line-height:1.25}
+.cv{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px 12px 12px 6px;background:var(--can);display:block;box-shadow:0 3px 10px rgba(45,74,59,.18)}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:linear-gradient(160deg,var(--pine),var(--sage));color:#fff;font:italic 600 20px/1.15 "Cormorant Garamond",Georgia,serif}
+.rk{list-style:none;padding:0;margin:0}.rk li{border-bottom:1px solid var(--line)}
+.rk a{display:flex;gap:14px;align-items:center;padding:12px 0;text-decoration:none;color:var(--ink)}
+.rk .cv{width:56px;flex:none}.rk .n{font:700 30px "Cormorant Garamond",serif;color:var(--cin);width:26px;text-align:center}
+.bp{display:flex;gap:18px;flex-wrap:wrap}.bp .cv{width:170px}.bp>div:not(.cv){flex:1;min-width:220px}
+.cl{padding-left:22px}.cl a{color:var(--ink)}.cl li{padding:5px 0}
+.rbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.rbar a{color:var(--mute);text-decoration:none}
+.rd{font:400 var(--fs)/var(--lh,1.8) Literata,Georgia,serif;max-width:36em;margin:0 auto;-webkit-user-select:text;user-select:text;-webkit-touch-callout:none}
+.rd h2{text-align:center;color:var(--pine);margin:20px 0 24px}.rd p{margin:0 0 .9em;text-indent:1.4em}
+.rd img{max-width:100%;height:auto;display:block;margin:1em auto}
+:root[data-theme=dark] .rd img.orn{filter:invert(1)}
+.wm{position:fixed;inset:0;pointer-events:none;opacity:.045;overflow:hidden;font-size:13px;line-height:3.4;word-break:break-all;transform:rotate(-20deg) scale(1.4);z-index:1}
+.rd.sans{font-family:"Nunito Sans",system-ui,sans-serif}.pg{position:fixed;top:env(safe-area-inset-top,0);left:0;height:3px;width:0;background:var(--cin);z-index:10}
+.nav2{display:flex;justify-content:space-between;max-width:36em;margin:30px auto 0}
+.au{max-width:400px;margin:30px auto}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0));transform:translateX(-50%);background:var(--cin);color:#fff;padding:11px 18px;border-radius:12px;z-index:9;max-width:90%}
+.toast.ok{background:var(--pine);color:var(--on)}
+.ctr{display:grid;gap:6px;margin:8px 0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}
+:focus-visible{outline:2px solid var(--cin);outline-offset:2px}
+#sc{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}#sc svg,#sc canvas{position:absolute;inset:0;width:100%;height:100%}
+#sc .st{fill:#fff;opacity:0}#sc .mn{fill:#f3e6c8;opacity:0}#sc .pn{fill:var(--sage);opacity:.3}
+:root[data-theme=dark] #sc .st{opacity:.85}:root[data-theme=dark] #sc .mn{opacity:.95}:root[data-theme=dark] #sc .pn{fill:#0e1914;opacity:1}
+mark{background:rgba(165,104,60,.3);color:inherit;border-radius:3px;cursor:pointer}mark.fv{border-bottom:2px solid var(--cin)}
+.tb{position:fixed;z-index:12;display:flex;background:var(--pine);border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.3)}.tb button{background:none;border:0;color:var(--on);font:700 14px "Nunito Sans",sans-serif;padding:9px 12px;cursor:pointer}
+.av{width:72px;height:72px;border-radius:50%;object-fit:cover;float:left;margin:0 14px 6px 0}.sw{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rbar{flex-wrap:wrap;gap:8px}
+.vp.pgd{position:relative;height:calc(100vh - 200px);height:calc(100dvh - 200px);max-width:36em;margin:0 auto;overflow:hidden;perspective:1800px}
+.vp.pgd .rd{position:relative;height:100%;width:100%;max-width:none;margin:0;column-width:var(--cw);column-gap:32px;column-fill:auto}
+.pgf{position:absolute;inset:0;transform-origin:left center;backface-visibility:hidden;background:var(--bg);box-shadow:-8px 0 18px rgba(0,0,0,.25);z-index:3;overflow:hidden}
+.ft{position:fixed;left:0;right:0;bottom:calc(8px + env(safe-area-inset-bottom,0px));text-align:center;font:600 12px "Nunito Sans",sans-serif;color:var(--mute);pointer-events:none;z-index:6}.ft span{background:var(--bg);padding:3px 12px;border-radius:12px;opacity:.92}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:55vh;overflow:auto;background:var(--card);border-top:1px solid var(--line);border-radius:16px 16px 0 0;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));z-index:14;box-shadow:0 -6px 20px rgba(0,0,0,.2)}.sheet a{color:var(--ink);text-decoration:none}
+.sheet.pvw{max-height:92vh}.cd{display:flex;gap:14px;justify-content:center;margin:8px 0}.cd span{text-align:center}.cd b{display:block;font:700 28px "Cormorant Garamond",serif;color:var(--pine)}.bdg{color:var(--cin)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px}.stats .card{margin:0}.stats b{display:block;font:700 32px "Cormorant Garamond",serif;color:var(--pine)}
+.bars{display:flex;align-items:flex-end;gap:3px;height:120px}.bars i{flex:1;background:var(--pine);border-radius:2px 2px 0 0;min-height:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}.chips .btn{margin:0}.btn.ghost.on{background:var(--pine);color:var(--on);border-color:var(--pine)}
+#bl{position:relative;display:flex;align-items:center}.dt{width:9px;height:9px;border-radius:50%;background:var(--cin);display:inline-block}#bl .dt{position:absolute;top:5px;right:5px}.dt.in{position:static;flex:none}
+.ver{text-align:center;color:var(--mute);font-size:12px;margin:0;padding:0 0 60px}h3{font:700 19px "Cormorant Garamond",Georgia,serif;margin:16px 0 4px;color:var(--pine)}
+/* menu lateral + sino e perfil */
+.hl{display:flex;align-items:center;gap:10px;min-width:0}
+nav{flex-wrap:nowrap;gap:8px}
+.ib{width:40px;height:40px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;padding:0;overflow:hidden;font:700 16px "Nunito Sans",sans-serif;text-decoration:none;cursor:pointer;position:relative}
+.ib img{width:100%;height:100%;object-fit:cover}
+#hpf,#dr .du .ib{border:2px solid var(--sage)}
+#bl.ib{display:grid;place-items:center}#bl.ib .dt{top:8px;right:9px}
+#dbk{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:19}
+#dr{position:fixed;top:0;bottom:0;left:0;width:min(82vw,320px);background:var(--card);border-right:1px solid var(--line);z-index:20;transform:translateX(-105%);transition:transform .22s ease;padding:calc(14px + env(safe-area-inset-top,0px)) 14px calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:2px;overflow:auto;box-shadow:6px 0 24px rgba(0,0,0,.25)}
+#dr.on{transform:none}
+#dr .dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+#dr .du{display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;background:var(--bg);margin-bottom:10px}
+#dr .du .ib{width:46px;height:46px}
+.dl{display:block;width:100%;text-align:left;background:none;border:0;color:var(--ink);font:700 17px "Nunito Sans",sans-serif;padding:12px;border-radius:10px;text-decoration:none;cursor:pointer}
+.dl:hover,.dl.on{background:var(--can)}.dl.on{color:var(--pine)}
+#dr hr{border:0;border-top:1px solid var(--line);margin:10px 0;width:100%}
+
+/* v15 */
+.sheet{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+.sheet.top{top:calc(env(safe-area-inset-top,0px) + 66px);bottom:auto;max-height:68vh;border-radius:0 0 16px 16px;border-top:0;border-bottom:1px solid var(--line);padding-bottom:14px;box-shadow:0 12px 24px rgba(0,0,0,.3)}
+.chips.wz{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:4;background:var(--bg);padding:8px 0;margin:0 0 8px}
+body.rdp{position:fixed;inset:0;width:100%;overflow:hidden}.rdp .ver{display:none}.rdp main{padding-bottom:0}
+main:has(#vp){padding-bottom:120px}
+.rbar>span{display:flex;gap:4px;overflow-x:auto;max-width:100%;scrollbar-width:none}.rbar .btn{white-space:nowrap;padding:6px 9px}
+.ft{text-align:left;padding-left:16px;bottom:calc(46px + env(safe-area-inset-bottom,0px))}
+.az{align-items:flex-start}.az .cv{width:150px}.az h1{margin-top:0}
+.rkb{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.rkb span{background:var(--can);color:var(--ink);border-radius:999px;padding:4px 10px;font:700 12px "Nunito Sans",sans-serif}
+.dtl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}.dtl dt{color:var(--mute);font-weight:700}.dtl dd{margin:0}
+.hs{display:grid;grid-template-columns:34px 1fr 28px;gap:8px;align-items:center;font-size:13px;margin:4px 0}.hs i{display:block;height:8px;border-radius:4px;background:var(--can);overflow:hidden}.hs i b{display:block;height:100%;background:var(--cin)}
+#kpv{--ink:#eee3d6;--line:#34463b;--mute:#a6b5a9;--on:#16211b;--pine:#8db097;--card:#23312a;--bg:#1a2520;position:fixed;inset:0;z-index:30;background:rgba(10,18,14,.95);display:flex;flex-direction:column;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top,0px)) 12px calc(78px + env(safe-area-inset-bottom,0px));overflow:hidden;color:#eee3d6}
+#kpv .kt,#kpv .kf{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:600px;gap:8px}#kpv .kt span{display:flex;gap:6px}#kpv .kh{margin:0;font-size:13px;text-align:center}#kpv .kf select{flex:1;min-width:0;padding:7px;font-size:14px}
+.ipad{position:relative;flex:none;background:#0d0d0f;border-radius:30px;padding:14px;box-shadow:0 0 0 2px #3a3a40,0 20px 50px rgba(0,0,0,.55)}.ipad::before{content:"";position:absolute;top:5px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2a2a30}
+.scr{position:relative;width:100%;height:100%;border-radius:12px;overflow:hidden}.scr.light{background:#fbfaf6;color:#1d1d1d}.scr.sepia{background:#f3e8d0;color:#40301e}.scr.dark{background:#111815;color:#d8d2c4}
+.kv{position:absolute;left:28px;top:26px;overflow:hidden}
+.kd{font-family:Literata,Georgia,serif;line-height:1.55;column-fill:auto;text-align:justify;hyphens:auto;margin:0;color:inherit}.kd h2{text-align:center;margin:0 0 1em;font-size:1.35em;color:inherit}.kd p{margin:0;text-indent:1.3em}.kd img{max-width:100%;max-height:100%;object-fit:contain;display:block;margin:0 auto;break-inside:avoid}
+.kc{position:absolute;inset:0;background:#111;display:flex;align-items:center;justify-content:center}.kc img,.kc .ph{width:100%;height:100%;object-fit:contain}
+.kg{position:absolute;bottom:12px;left:0;right:0;text-align:center;font:600 12px "Nunito Sans",sans-serif;opacity:.7}
+
+/* v16 */
+a{color:var(--pine);text-underline-offset:2px}a:visited{color:var(--pine)}
+.rd a,.kd a{color:inherit;text-decoration:none}
+.sub a,.az a:not(.btn){font-weight:700}
+.toasts{position:fixed;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom,0));display:flex;flex-direction:column;align-items:center;gap:8px;z-index:40;pointer-events:none}
+.toasts .toast{position:static;transform:none;pointer-events:auto}
+.note{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--sage);background:var(--card);border-radius:14px;padding:14px 16px;margin:0 0 14px}
+.note>i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--pine);color:var(--on);display:grid;place-items:center;font:700 15px Georgia,serif;font-style:normal}
+.note b{display:block;font-size:17px;line-height:1.3}.note small{margin-top:4px}
+.ovl{position:fixed;inset:0;z-index:60;background:rgba(10,18,15,.72);display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto;backdrop-filter:blur(3px)}
+.dlg{background:var(--card);color:inherit;border:1px solid var(--line);border-radius:18px;max-width:520px;width:100%;padding:22px 20px;box-shadow:0 20px 60px rgba(0,0,0,.45);max-height:94vh;overflow:auto}
+.dlg h2{margin:0 0 12px}.dlg h3{margin:16px 0 8px}
+.dlg.pg{text-align:center}.dlg.pg b{display:block;font-size:18px;margin:12px 0 10px}.dlg.pg ol{list-style:none;padding:0;margin:0 0 12px;text-align:left;display:inline-block}
+.dlg.pg li{padding:5px 0 5px 28px;position:relative;opacity:.5}.dlg.pg li:before{content:"○";position:absolute;left:4px}
+.dlg.pg li.c{opacity:1;font-weight:600}.dlg.pg li.c:before{content:"◔";animation:nzs 1s linear infinite;display:inline-block}.dlg.pg li.d{opacity:.85}.dlg.pg li.d:before{content:"✓";color:var(--sage)}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--sage);margin:4px auto;animation:nzs .9s linear infinite}
+@keyframes nzs{to{transform:rotate(360deg)}}
+.pb{display:flex;gap:14px;align-items:center;margin:0 0 14px}.pb img{width:84px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.35)}.pb b{display:block;font-size:19px;line-height:1.25}.pb span{opacity:.75}
+.nx3{display:grid;gap:10px;margin:0 0 16px}.nx3 div{border:1px solid var(--line);border-radius:12px;padding:10px 12px}.nx3 b{display:block}.nx3 small{display:block;opacity:.8;margin-top:2px}
+.acts{display:flex;gap:10px;flex-wrap:wrap}.acts .btn{flex:1;text-align:center;min-width:140px}
+.okb{border:2px solid var(--sage);border-left-width:6px;background:var(--card);border-radius:12px;padding:12px 14px;margin:12px 0}.okb b{display:block}.okb small{display:block;margin-top:3px;opacity:.8}
+label.btn{display:inline-block;cursor:pointer;text-align:center}
+.note.big{flex-direction:column;align-items:stretch;text-align:center;padding:18px 16px}.note.big>i{margin:0 auto}
+.note.big .cd{gap:10px;margin:12px 0 2px}.note.big .cd span{min-width:64px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 6px}.note.big .cd b{font-size:34px;line-height:1.1}
+.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-line}.clamp.open{display:block;-webkit-line-clamp:unset}
+.more{background:none;border:0;color:var(--pine);font:700 14px "Nunito Sans",sans-serif;padding:6px 0;cursor:pointer}
+details.card summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}details.card summary::-webkit-details-marker{display:none}details.card summary::after{content:"▾";color:var(--mute)}details[open].card summary::after{content:"▴"}details.card .dtl{margin-top:12px}
+.lnk{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--ink);font:700 16px "Nunito Sans",sans-serif;cursor:pointer;margin-bottom:14px}.lnk small{display:inline;font-weight:400}.lnk::after{content:"›";font-size:22px;color:var(--mute)}
+.ser{margin:2px 0 6px}
+.cats{margin:8px 0 14px}.cats h4{margin:14px 0 6px;font:700 14px "Nunito Sans",sans-serif;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.cats .pick{display:flex;gap:8px;flex-wrap:wrap}.cats .pick .btn{margin:0}
+.cats .box{max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--bg)}
+.cats .sel{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 8px}.cats .sel span{background:var(--pine);color:var(--on);border-radius:999px;padding:4px 10px;font:700 12px "Nunito Sans",sans-serif}
+.cats .cnt{font-size:13px;color:var(--mute);margin:0 0 6px}
+.rkb.tr span{background:none;border:1px solid var(--line)}
+.chips.sc{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.chips.sc .btn{white-space:nowrap;flex:none}
+.lab{font:700 12px "Nunito Sans",sans-serif;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;margin:10px 0 4px}
+/* leitor v16 */
+body.rdp #sc{display:none}
+.wm{opacity:.05!important;line-height:6!important;font-size:12px!important}
+body.shh .vp,body.shh .rbar,body.shh .wm,body.shh .ft,body.shh .nav2{visibility:hidden}
+#shd{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:var(--bg);color:var(--mute);font:700 17px "Nunito Sans",sans-serif;text-align:center;padding:24px;cursor:pointer}
+.ft .wl{display:block;width:max-content;margin-top:3px;font-size:10px;opacity:.8}
+@media print{body>*{display:none!important}body::before{content:"A impressão deste livro está desativada.";display:block;padding:40px;font:18px sans-serif}}
+.rd{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.rd p{margin:0;text-indent:1.4em}.rd h2+p,.rd p:has(>img:only-child),.rd .nin{text-indent:0}
+.rd h2{break-after:avoid}.rd.fm h2{display:none}
+.rd img{max-height:var(--ph,90vh);width:auto;max-width:100%;object-fit:contain;break-inside:avoid}
+.rd p:has(>img:only-child){margin:.6em 0;text-align:center}
+.vp.pgd .rd{transition:transform .2s ease}
+.vp.pgd{padding:0}
+.rbar>span{flex-wrap:nowrap}.rbar>a{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sg{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}.sg .btn{margin:0;flex:1 1 auto;text-align:center}
+.kd img{max-height:var(--ph,100%);width:auto;max-width:100%}
+.kd p:has(>img:only-child){text-indent:0;text-align:center}
+.kd.fm h2{display:none}
+</style>
+</head>
+<body>
+<header><div class="hl"><button id="mn" class="ib" aria-label="Abrir menu" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><a class="logo" href="#/">Natalize</a></div><nav id="nav"></nav></header>
+<main id="app"><p class="empty">Carregando…</p></main>
+<p class="ver">Natalize v16</p>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+<script>
+const sb=supabase.createClient("https://wwngtwwfvrkygzpvmgql.supabase.co","sb_publishable_duiCo2i23qSWPbG1fGbsQg_a7DVkMuH");
+const $=s=>document.querySelector(s),app=$("#app");
+const todayBR=()=>new Date().toLocaleDateString("sv-SE",{timeZone:"America/Sao_Paulo"}),dBR=d=>String(d||"").split("-").reverse().join("/");
+let CDT=null;
+function cdown(d){clearInterval(CDT);const t=new Date(d+"T00:00:00-03:00").getTime(),f=()=>{const e=$("#cd");if(!e){clearInterval(CDT);return}const s=Math.max(0,Math.floor((t-Date.now())/1e3));if(!s){clearInterval(CDT);e.textContent="Lançando agora! Atualize a página.";return}e.innerHTML=[[Math.floor(s/86400),"dias"],[Math.floor(s%86400/3600),"horas"],[Math.floor(s%3600/60),"min"],[s%60,"seg"]].map(([n,l])=>`<span><b>${String(n).padStart(2,"0")}</b><small>${l}</small></span>`).join("")};f();CDT=setInterval(f,1000)}
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ls=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){return null}};
+let U=null,P=null,draft=null;
+const icon=n=>{const c=document.createElement("canvas");c.width=c.height=n;const x=c.getContext("2d"),k=n/512,f=v=>v*k;x.fillStyle="#3e6b55";x.fillRect(0,0,n,n);x.fillStyle="#f7ede4";x.beginPath();x.arc(f(230),f(270),f(120),0,7);x.fill();x.fillStyle="#3e6b55";x.beginPath();x.arc(f(280),f(235),f(105),0,7);x.fill();x.fillStyle="#f7ede4";x.beginPath();for(let i=0;i<10;i++){const q=i%2?17:42,a=-Math.PI/2+i*Math.PI/5;x[i?"lineTo":"moveTo"](f(345+q*Math.cos(a)),f(185+q*Math.sin(a)))}x.fill();return c.toDataURL("image/png")};
+try{const a=icon(192),b=icon(512),u=location.href.split("#")[0],L=(rel,h,sz)=>{const e=document.createElement("link");e.rel=rel;e.href=h;if(sz)e.sizes=sz;document.head.append(e)};
+L("icon",a,"192x192");L("apple-touch-icon",icon(180),"180x180");
+L("manifest",URL.createObjectURL(new Blob([JSON.stringify({name:"Natalize",short_name:"Natalize",start_url:u,scope:u.replace(/[^/]*$/,""),display:"standalone",background_color:"#f7ede4",theme_color:"#3e6b55",lang:"pt-BR",icons:[{src:a,sizes:"192x192",type:"image/png",purpose:"any maskable"},{src:b,sizes:"512x512",type:"image/png",purpose:"any maskable"}]})],{type:"application/manifest+json"})))}catch(e){}
+document.documentElement.dataset.theme=ls("nz-th")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+let sn=ls("nz-sn")!=="0";
+(()=>{const sc=document.createElement("div");sc.id="sc";let h='<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="mn" cx="320" cy="62" r="22"/>';
+for(let i=0;i<42;i++)h+=`<circle class="st" cx="${(i*97)%400}" cy="${(i*53)%170}" r="${i%5?.7:1.1}"/>`;
+for(let i=0;i<9;i++){const x=i*50-10,t=70+(i*37)%50;h+=`<polygon class="pn" points="${x},300 ${x+28},${300-t} ${x+56},300"/><polygon class="pn" points="${x+6},${300-t*.45} ${x+28},${300-t*1.25} ${x+50},${300-t*.45}"/>`}
+sc.innerHTML=h+"</svg>";const cv=document.createElement("canvas");sc.append(cv);document.body.prepend(sc);
+const g=cv.getContext("2d");let W,H,F=[];const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;F=Array.from({length:W<600?45:90},()=>({x:Math.random()*W,y:Math.random()*H,r:1+Math.random()*2.2,v:.4+Math.random()*.9,p:Math.random()*6}))};rs();addEventListener("resize",rs);
+const tick=()=>{g.clearRect(0,0,W,H);if(sn&&!document.hidden&&!location.hash.startsWith("#/ler")){g.fillStyle=document.documentElement.dataset.theme==="dark"?"rgba(255,255,255,.85)":"rgba(110,150,125,.7)";for(const f of F){f.y+=f.v;f.p+=.01;f.x+=Math.sin(f.p)*.4;if(f.y>H){f.y=-5;f.x=Math.random()*W}g.beginPath();g.arc(f.x,f.y,f.r,0,7);g.fill()}}requestAnimationFrame(tick)};
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)tick()})();
+let PGO=null;const say=(t,ok)=>{if(PGO&&!ok)PGO.err=t;let w=document.querySelector(".toasts");if(!w){w=document.createElement("div");w.className="toasts";document.body.append(w)}while(w.children.length>=2)w.firstChild.remove();const d=document.createElement("div");d.className="toast"+(ok?" ok":"");d.textContent=t;w.append(d);setTimeout(()=>d.remove(),4500)};
+const FM=t=>/^(in[ií]cio|capa|folha de rosto|cr[ée]ditos|direitos)$/i.test(String(t||"").trim());
+const clean=t=>String(t||"").replace(/(\t|\.{3,}|\s{3,})\s*\d{1,4}\s*$/,"").replace(/\s+/g," ").trim();
+const longD=d=>{try{const x=new Date(d+"T12:00:00-03:00").toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"America/Sao_Paulo"});return x.charAt(0).toUpperCase()+x.slice(1)}catch(e){return dBR(d)}};
+function dlg(h,cls){document.getElementById("nzd")?.remove();const o=document.createElement("div");o.id="nzd";o.className="ovl";o.innerHTML=`<div class="dlg ${cls||""}" role="dialog" aria-modal="true">${h}</div>`;o.onclick=e=>{if(e.target===o||e.target.closest("[data-x]"))o.remove()};document.body.append(o);return o}
+function prog(title,steps){document.getElementById("nzp")?.remove();const o=document.createElement("div");o.id="nzp";o.className="ovl";o.innerHTML=`<div class="dlg pg" role="status" aria-live="polite"><div class="spin"></div><b>${esc(title)}</b><ol>${steps.map(x=>`<li>${esc(x)}</li>`).join("")}</ol><small style="display:block;opacity:.75">Pode levar alguns segundos. Não feche esta tela.</small></div>`;document.body.append(o);const g={err:null,at(i){o.querySelectorAll("li").forEach((l,k)=>l.className=k<i?"d":k===i?"c":"")},end(){o.remove()}};g.at(0);return g}
+const note=(h,s,cls)=>`<div class="note ${cls||""}"><i>i</i><div><b>${h}</b>${s?`<small>${s}</small>`:""}</div></div>`;
+const cover=b=>b.cover_path?`<img class="cv" src="${esc(b.cover_path)}" alt="Capa de ${esc(b.title)}">`:`<div class="cv ph"><span>${esc(b.title)}</span></div>`;
+const card=b=>`<a class="bk" href="#/livro/${b.id}">${cover(b)}<b>${esc(b.title)}</b><small>${esc(b.pen_name)}</small>${b.release_date&&b.release_date>todayBR()?`<small class="bdg">Lança em ${dBR(b.release_date)}</small>`:""}</a>`;
+
+function nav(){
+document.querySelectorAll("#dr,#dbk").forEach(x=>x.remove());document.body.style.overflow="";
+const mn=$("#mn"),bind=()=>{$("#tm").onclick=()=>{const o=["light","sepia","dark"],t=o[(o.indexOf(document.documentElement.dataset.theme)+1)%3];document.documentElement.dataset.theme=t;ls("nz-th",t)};$("#sn").onclick=()=>{sn=!sn;ls("nz-sn",sn?"1":"0")}};
+mn.hidden=!U;
+if(!U){$("#nav").innerHTML=`<button id="sn" aria-label="Ligar ou desligar a neve">❄</button><button id="tm" aria-label="Trocar tema: claro, sépia ou escuro">Tema</button>`;bind();return}
+const h=location.hash||"#/",on=x=>x==="#/"?(h==="#/"||h==="#"):(h===x||h.startsWith(x+"/")),au=P?.role==="author",nm=(P?.name||"").trim(),
+av=P?.avatar&&/^(data:image|https?:)/.test(P.avatar)?`<img src="${esc(P.avatar)}" alt="">`:`<span>${esc((nm[0]||"N").toUpperCase())}</span>`,
+L=[["#/","Início"],["#/livros","Livros"],["#/biblioteca","Biblioteca"],["#/grifos","Grifos"],au?["#/autora","Área da autora"]:["#/perfil","Perfil"]];
+$("#nav").innerHTML=`<button id="bl" class="ib" aria-label="Notificações"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><i class="dt" hidden></i></button><a id="hpf" class="ib" href="#/perfil" aria-label="Meu perfil">${av}</a>`;
+const bk=document.createElement("div");bk.id="dbk";bk.hidden=true;
+const a=document.createElement("aside");a.id="dr";a.setAttribute("aria-label","Menu");
+a.innerHTML=`<div class="dh"><b class="logo">Natalize</b><button class="ib" id="dx" aria-label="Fechar menu">✕</button></div><div class="du"><div class="ib">${av}</div><span><b>${esc(nm||"Leitora")}</b><small>${au?"Autora":"Leitora"}</small></span></div>${L.map(([k,t])=>`<a class="dl${on(k)?" on":""}" href="${k}">${t}</a>`).join("")}<hr><button class="dl" id="sn">❄ Neve</button><button class="dl" id="tm">Tema</button><button class="dl" id="out">Sair</button>`;
+document.body.append(bk,a);
+const abre=()=>{bk.hidden=false;a.classList.add("on");document.body.style.overflow="hidden"},fecha=()=>{a.classList.remove("on");bk.hidden=true;document.body.style.overflow=""};
+mn.onclick=abre;bk.onclick=fecha;$("#dx").onclick=fecha;a.onclick=e=>{if(e.target.closest("a"))fecha()};
+if(!window._nzEsc){window._nzEsc=1;addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelector("#dx")?.click()})}
+bind();$("#out").onclick=()=>sb.auth.signOut();$("#bl").onclick=notifs;badge()}
+
+function entrar(){
+app.innerHTML=`<div class="card au"><h1>Natalize</h1><p class="sub">Leituras de Natal escritas por autoras independentes.</p><label>E-mail<input id="em" type="email" autocomplete="email"></label><label>Senha<input id="pw" type="password" autocomplete="current-password"></label><label id="nl" hidden>Seu nome<input id="nm"></label><label id="al" hidden><input id="au" type="checkbox" style="width:auto;margin-right:.5rem">Quero publicar meus livros</label><button class="btn" id="go">Entrar</button><button class="btn ghost" id="sw">Criar conta</button></div>`;
+let novo=false;
+$("#sw").onclick=()=>{novo=!novo;$("#nl").hidden=$("#al").hidden=!novo;$("#go").textContent=novo?"Criar conta":"Entrar";$("#sw").textContent=novo?"Já tenho conta":"Criar conta"};
+$("#go").onclick=async()=>{const email=$("#em").value.trim(),password=$("#pw").value;
+const r=novo?await sb.auth.signUp({email,password,options:{data:{name:$("#nm").value.trim(),role:$("#au").checked?"author":"reader"}}}):await sb.auth.signInWithPassword({email,password});
+if(r.error)return say(r.error.message);
+if(novo&&!r.data.session)say("Conta criada! Confirme pelo link enviado ao seu e-mail e depois entre.",1)}}
+
+let NU=0,CH=null;
+function sheetOpen(h){document.querySelectorAll(".sheet.gl").forEach(x=>x.remove());const d=document.createElement("div");d.className="sheet gl";d.innerHTML=h;d.onclick=e=>{if(e.target.closest("[data-x],a"))d.remove()};document.body.append(d);return d}
+async function badge(){if(!U)return;const {count}=await sb.from("notifications").select("id",{count:"exact",head:true}).eq("read",false);NU=count||0;document.querySelectorAll(".dt:not(.in)").forEach(d=>d.hidden=!NU)}
+async function notifs(){const {data}=await sb.from("notifications").select("*").order("created_at",{ascending:false}).limit(20);
+sheetOpen(`<div class="sw"><b>Notificações</b><button class="btn ghost sm" data-x>Fechar</button></div>`+((data||[]).map(x=>`<div class="row"><a href="${esc(x.link||"#/")}"><b>${esc(x.title)}</b><small>${esc(x.body)}</small></a>${x.read?"":`<i class="dt in"></i>`}</div>`).join("")||`<p class="empty">Nenhuma notificação por enquanto.</p>`)).classList.add("top");
+await sb.from("notifications").update({read:true}).eq("read",false);badge()}
+const stars=n=>"★".repeat(n)+"☆".repeat(5-n);
+async function home(){
+const [{data:rk},{data:bs0},{data:cr},{data:rg}]=await Promise.all([sb.rpc("ranking_semana"),sb.from("books").select("id,title,pen_name,cover_path,genre,tropes,code,release_date").eq("status","published").order("created_at",{ascending:false}),sb.from("reading_progress").select("position_pct,books(id,title,pen_name,cover_path)").lt("position_pct",100).order("updated_at",{ascending:false}).limit(6),sb.rpc("ranking_geral")]);
+const bs=(bs0||[]).filter(b=>!b.release_date||b.release_date<=todayBR()),soon=(bs0||[]).filter(b=>b.release_date&&b.release_date>todayBR());
+const by=Object.fromEntries((bs||[]).map(b=>[b.id,b])),top=(rk||[]).filter(r=>by[r.book_id]).map(r=>({...by[r.book_id],pg:Math.round(r.pages)})),cont=(cr||[]).map(r=>r.books).filter(Boolean),gs=[...new Set((bs||[]).map(b=>b.genre).filter(Boolean))];
+app.innerHTML=(cont.length?`<h2>Continue lendo</h2><div class="grid">${cont.map(card).join("")}</div>`:"")+(soon.length?`<h2>Em breve</h2><div class="grid">${soon.map(card).join("")}</div>`:"")+`<h1>Descobrir</h1><input id="q" type="search" placeholder="Buscar por título, autora, gênero, trope ou código"><div class="chips"><button class="btn ghost sm on" data-g="">Todos</button>${gs.map(g=>`<button class="btn ghost sm" data-g="${esc(g)}">${esc(g)}</button>`).join("")}</div><div id="gr"></div><h2>Rankings</h2><div class="chips"><button class="btn ghost sm on" data-k="geral">Geral</button><button class="btn ghost sm" data-k="semana">Da semana</button></div><div id="rk"></div><h2>Por gênero</h2><div id="gn"></div>`;
+const lst=(a,u)=>a.length?`<ol class="rk">${a.map((b,i)=>`<li><a href="#/livro/${b.id}"><span class="n">${i+1}</span>${cover(b)}<div><b>${esc(b.title)}</b><small>${esc(b.pen_name)}</small><small>${b.pg} ${u}</small></div></a></li>`).join("")}</ol>`:`<p class="empty">O ranking aparece quando as primeiras leituras acontecerem.</p>`;
+const geral=(rg||[]).filter(r=>by[r.book_id]).map(r=>({...by[r.book_id],pg:Math.round(r.pages)})),rkv=k=>{$("#rk").innerHTML=lst((k==="geral"?geral:top).slice(0,10),"páginas lidas")};
+$("#gn").innerHTML=gs.map(g=>{const a=geral.filter(b=>b.genre===g).slice(0,3);return a.length?`<h3>${esc(g)}</h3>`+lst(a,"páginas lidas"):""}).join("")||`<p class="empty">Os rankings por gênero aparecem com as primeiras leituras.</p>`;rkv("geral");
+
+let G="";const nm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),f=()=>{const q=nm($("#q").value),L=(bs||[]).filter(b=>(!G||b.genre===G)&&(!q||nm([b.title,b.pen_name,b.genre,b.tropes,b.code].join(" ")).includes(q)));$("#gr").innerHTML=L.length?`<div class="grid">${L.map(card).join("")}</div>`:`<p class="empty">Nenhum livro encontrado.</p>`};
+$("#q").oninput=f;app.onclick=e=>{const k=e.target.dataset.k;if(k){document.querySelectorAll("[data-k]").forEach(x=>x.classList.toggle("on",x.dataset.k===k));rkv(k)}const g=e.target.dataset.g;if(g!=null){G=g;document.querySelectorAll("[data-g]").forEach(x=>x.classList.toggle("on",x.dataset.g===g));f()}};f()}
+
+async function livro(id,sec){
+if(/^NTZ-/i.test(id)){const {data:k}=await sb.from("books").select("id").eq("code",id.toUpperCase()).maybeSingle();if(k)id=k.id}
+const [{data:b},{data:cs},{data:lib},{data:pr},{data:rv}]=await Promise.all([sb.from("books").select("*").eq("id",id).maybeSingle(),sb.from("chapters").select("id,position,title,words").eq("book_id",id).order("position"),sb.from("library").select("book_id").eq("book_id",id).maybeSingle(),sb.from("reading_progress").select("chapter_id").eq("book_id",id).maybeSingle(),sb.from("reviews").select("id,rating,body,reviewer,user_id").eq("book_id",id).order("created_at",{ascending:false})]);
+if(!b){app.innerHTML=`<p class="empty">Livro não encontrado.</p>`;return}
+if(b.author_id!==U.id)sb.from("book_events").insert({book_id:id,kind:"view"});
+const [{data:au},{data:sim}]=await Promise.all([sb.from("profiles").select("name,pronouns,bio,links,avatar").eq("id",b.author_id).maybeSingle(),b.genre?sb.from("books").select("id,title,pen_name,cover_path").eq("status","published").eq("genre",b.genre).neq("id",id).limit(6):{data:[]}]);
+const [{data:rmd},{data:fw}]=await Promise.all([sb.from("release_reminders").select("book_id").eq("book_id",id).maybeSingle(),sb.from("follows").select("author_id").eq("author_id",b.author_id).maybeSingle()]);
+const soon=!!b.release_date&&b.release_date>todayBR();
+const L=cs||[],cur=L.find(c=>c.id===pr?.chapter_id)||L[0],R=rv||[],avg=R.length?(R.reduce((t,r)=>t+r.rating,0)/R.length).toFixed(1):"",my=R.find(r=>r.user_id===U.id);let rt=my?.rating||0;
+const [{data:rg2},{data:bcs}]=await Promise.all([sb.rpc("ranking_geral"),sb.from("book_categories").select("book_id,category_id,categories(name,kind)")]);
+const rgl=rg2||[],pos=rgl.findIndex(r=>r.book_id===id),myC=(bcs||[]).filter(x=>x.book_id===id),rks=[];
+if(pos>=0)rks.push("#"+(pos+1)+" em Geral");
+myC.forEach(c=>{const ids=new Set((bcs||[]).filter(x=>x.category_id===c.category_id).map(x=>x.book_id)),p=rgl.filter(r=>ids.has(r.book_id)).findIndex(r=>r.book_id===id);if(p>=0)rks.push("#"+(p+1)+" em "+(c.categories?.name||""))});
+const cgen=myC.filter(c=>c.categories?.kind!=="trope").map(c=>c.categories?.name).filter(Boolean),ctro=myC.filter(c=>c.categories?.kind==="trope").map(c=>c.categories?.name).filter(Boolean),vis=L.filter(c=>!FM(c.title)).length?L.filter(c=>!FM(c.title)):L,wd=L.reduce((t,c)=>t+(c.words||0),0),npg=Math.max(1,Math.round(wd/250)),
+hist=R.length?`<div class="card"><b style="font-size:28px">${avg}</b> <small style="display:inline">de 5 · ${R.length} avaliaç${R.length>1?"ões":"ão"}</small>${[5,4,3,2,1].map(k=>{const n=R.filter(r=>r.rating===k).length;return`<div class="hs"><span>${k} ★</span><i><b style="width:${Math.round(n/R.length*100)}%"></b></i><span>${n}</span></div>`}).join("")}</div>`:"",
+dets=[["Idioma",{"pt-BR":"Português","en":"English","es":"Español"}[b.language]||b.language],["Páginas","aprox. "+npg],["Série",b.series_name?b.series_name+(b.series_number?" #"+b.series_number:""):""],["Edição",b.edition],["Editora",b.publisher],["ISBN",b.isbn],["Lançamento",b.release_date?dBR(b.release_date):""],["Classificação",b.age_min!=null?b.age_min+(b.age_max!=null?" a "+b.age_max:"+")+" anos":""],["Código do livro",b.code]].filter(x=>x[1]);
+app.innerHTML=`<div class="bp az">${cover(b)}<div><h1>${esc(b.title)}</h1>${b.subtitle?`<p class="sub">${esc(b.subtitle)}</p>`:""}<p class="sub">por <a href="#/escritora/${b.author_id}">${esc(b.pen_name)}</a></p>${b.series_name?`<p class="sub ser">Parte da série: <b>${esc(b.series_name)}</b>${b.series_number?" #"+b.series_number:""}</p>`:""}${avg?`<p><b>${stars(Math.round(avg))}</b> ${avg} (${R.length})</p>`:`<p class="sub">Sem avaliações ainda</p>`}${rks.length?`<div class="rkb">${rks.map(x=>`<span>🏆 ${esc(x)}</span>`).join("")}</div>`:`<small>Ainda sem posição no ranking.</small>`}${cgen.length?`<div class="rkb">${cgen.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}${ctro.length?`<div class="rkb tr">${ctro.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}<small>Aprox. ${npg} páginas</small>${soon?`${b.author_id===U.id?"":`<button class="btn" id="rm">${rmd?"Lembrete ativado ✓ (tocar para cancelar)":"Avise-me quando lançar"}</button>`}${cur&&b.author_id===U.id?`<a class="btn ghost" href="#/ler/${id}/${cur.position}">Pré-visualizar</a>`:""}`:`${cur?`<a class="btn" href="#/ler/${id}/${cur.position}">${pr?"Continuar lendo":"Começar a ler"}</a>`:""}<button class="btn ghost" id="lb">${lib?"Remover da biblioteca":"Adicionar à biblioteca"}</button>`}<button class="btn ghost" id="sh">Compartilhar</button></div></div>${soon?`<div class="note big"><i>i</i><div><b>Este livro será lançado em ${esc(longD(b.release_date))}</b><small>Falta pouco! Toque em “Avise-me quando lançar” para receber uma notificação.</small></div><div id="cd" class="cd"></div></div>`:""}<h2>Sobre este livro</h2><div class="card"><div class="clamp" id="sy1">${esc(b.synopsis)}</div><button class="more" id="sym" hidden>Leia mais ▾</button></div>${soon&&b.author_id!==U.id?"":`<button class="lnk" id="ixb"><span>Índice <small>· ${vis.length} ${vis.length===1?"parte":"partes"}</small></span></button>`}<details class="card"><summary>Ver todos os detalhes</summary><dl class="dtl">${dets.map(d=>`<dt>${d[0]}</dt><dd>${esc(d[1])}</dd>`).join("")}</dl></details>${au?`<h2>Sobre ${esc(b.pen_name||au.name)}</h2><div class="card">${au.avatar?`<img class="av" src="${esc(au.avatar)}" alt="">`:""}<b>${esc(au.name)}</b>${au.pronouns?`<small>${esc(au.pronouns)}</small>`:""}<p>${esc(au.bio)}</p><p>${lk(au.links)}</p>${b.author_id===U.id?"":`<button class="btn" id="fl2">${fw?"Seguindo ✓":"Seguir"}</button> `}<a class="btn ghost sm" href="#/escritora/${b.author_id}">Ver página da autora</a></div>`:""}
+<h2 id="rv">Avaliações</h2>${hist}${b.author_id===U.id?"":`<div class="card"><b>${my?"Sua avaliação":"Avalie este livro"}</b><div class="chips" id="st">${[1,2,3,4,5].map(i=>`<button class="btn ghost sm${i<=rt?" on":""}" data-r="${i}">${i} ★</button>`).join("")}</div><textarea id="rb" maxlength="1500" placeholder="Conte o que achou (opcional)">${esc(my?.body)}</textarea><button class="btn" id="rs">Enviar avaliação</button></div>`}
+${R.map(r=>`<div class="card"><b>${stars(r.rating)}</b> <small>${esc(r.reviewer)}</small><p>${esc(r.body)}</p>${r.user_id===U.id?"":`<button class="btn ghost red sm" data-rp="${r.id}">Denunciar</button>`}</div>`).join("")||`<p class="empty">Ainda não há avaliações.</p>`}
+${(sim||[]).length?`<h2>Parecidos com este</h2><div class="grid">${sim.map(card).join("")}</div>`:""}`;
+if($("#lb"))$("#lb").onclick=async()=>{lib?await sb.from("library").delete().eq("book_id",id).eq("user_id",U.id):await sb.from("library").insert({book_id:id});livro(id)};
+if($("#rm"))$("#rm").onclick=async()=>{const {error}=rmd?await sb.from("release_reminders").delete().eq("book_id",id).eq("user_id",U.id):await sb.from("release_reminders").insert({book_id:id});if(error)return say(error.message);say(rmd?"Lembrete removido.":"Combinado! Avisaremos quando lançar.",1);livro(id)};
+if($("#fl2"))$("#fl2").onclick=async()=>{const {error}=fw?await sb.from("follows").delete().eq("author_id",b.author_id).eq("user_id",U.id):await sb.from("follows").insert({author_id:b.author_id});if(error)return say(error.message);say(fw?"Você deixou de seguir.":"Você está seguindo! Avisaremos sobre novidades.",1);livro(id)};
+if(soon)cdown(b.release_date);
+{const c=$("#sy1"),m=$("#sym");if(c&&m){if(c.scrollHeight>c.clientHeight+2)m.hidden=false;m.onclick=()=>{const o=c.classList.toggle("open");m.textContent=o?"Leia menos ▴":"Leia mais ▾"}}}
+if($("#ixb"))$("#ixb").onclick=()=>sheetOpen(`<div class="sw"><b>Índice</b><button class="btn ghost sm" data-x>Fechar</button></div>`+vis.map(c=>`<div class="row"><a href="#/ler/${id}/${c.position}">${esc(clean(c.title)||"Capítulo "+c.position)}</a></div>`).join(""));
+$("#sh").onclick=()=>{const u=location.href.split("#")[0]+"#/livro/"+(b.code||id);sb.from("book_events").insert({book_id:id,kind:"share"});navigator.share?navigator.share({title:b.title,url:u}).catch(()=>{}):navigator.clipboard?.writeText(u).then(()=>say("Link copiado!",1))};
+app.onclick=async e=>{const d=e.target.dataset;if(d.cp)navigator.clipboard?.writeText(d.cp).then(()=>say("Código copiado!",1));if(d.r){rt=+d.r;document.querySelectorAll("#st [data-r]").forEach(x=>x.classList.toggle("on",+x.dataset.r<=rt))}
+if(e.target.id==="rs"){if(!rt)return say("Escolha de 1 a 5 estrelas.");const {error}=await sb.from("reviews").upsert({book_id:id,rating:rt,body:$("#rb").value.trim()},{onConflict:"book_id,user_id"});if(error)return say(error.message);say("Avaliação enviada!",1);livro(id,"avaliar")}
+if(d.rp){const {error}=await sb.from("review_reports").insert({review_id:d.rp});say(error?"Você já denunciou esta avaliação.":"Denúncia enviada.",!error)}};
+if(sec==="avaliar")$("#rv")?.scrollIntoView()}
+
+async function ler(id,n){
+n=+n||1;
+const [{data:b},{data:c},{count}]=await Promise.all([sb.from("books").select("id,title,pen_name,synopsis,genre,tropes,cover_path").eq("id",id).maybeSingle(),sb.from("chapters").select("*").eq("book_id",id).eq("position",n).maybeSingle(),sb.from("chapters").select("id",{count:"exact",head:true}).eq("book_id",id)]);
+if(!c||!b){app.innerHTML=`<p class="empty">Capítulo não encontrado.</p>`;return}
+let fs=+ls("nz-fs")||18;const setfs=v=>{fs=Math.max(14,Math.min(28,v));ls("nz-fs",fs);document.documentElement.style.setProperty("--fs",fs+"px")};setfs(fs);
+app.innerHTML=`<div class="pg" id="pg"></div><div class="rbar"><a href="#/livro/${id}">← ${esc(b.title)}</a><span><button class="btn ghost sm" id="ix">Índice</button> <button class="btn ghost sm" id="nt" aria-label="Meus grifos neste livro">Notas</button> <button class="btn ghost sm" id="aa" aria-label="Aparência e leitura"><b>Aa</b></button> <button class="btn ghost sm" id="mm" aria-label="Mais opções"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></button></span></div><div class="vp" id="vp"><article class="rd${FM(c.title)?" fm":""}"><h2>${esc(clean(c.title))}</h2>${DOMPurify.sanitize(c.content)}</article></div><div class="ft" id="ft"></div><div class="wm"></div><div class="nav2">${n>1?`<a class="btn ghost" href="#/ler/${id}/${n-1}">Anterior</a>`:"<span></span>"}${n<count?`<a class="btn" href="#/ler/${id}/${n+1}">Próximo</a>`:`<a class="btn" href="#/livro/${id}">Fim</a>`}</div><div id="end"></div>`;
+$(".wm").textContent=(U.email+" · "+todayBR()+"     ").repeat(260);
+const shh=on=>{document.body.classList.toggle("shh",on);let o=$("#shd");if(on&&!o){o=document.createElement("div");o.id="shd";o.textContent="Conteúdo protegido. Toque para continuar lendo.";o.onclick=()=>shh(false);document.body.append(o)}if(!on&&o)o.remove()};
+document.onvisibilitychange=()=>shh(document.hidden);onblur=()=>shh(true);onfocus=()=>shh(false);
+let ser=ls("nz-ff")!=="sans",lh=+ls("nz-lh")||1.8;const ap=()=>{$(".rd").classList.toggle("sans",!ser);document.documentElement.style.setProperty("--lh",lh)};ap();
+
+onscroll=()=>{if(!mode)upd()};
+document.oncopy=e=>e.preventDefault();
+const mk=h=>{const w=document.createTreeWalker($(".rd"),NodeFilter.SHOW_TEXT);let t;while(t=w.nextNode()){const i=t.data.indexOf(h.quote);if(i>=0){const r=document.createRange();r.setStart(t,i);r.setEnd(t,i+h.quote.length);const m=document.createElement("mark");m.dataset.h=h.id;if(h.fav)m.className="fv";r.surroundContents(m);return}}};
+((await sb.from("highlights").select("id,quote,fav").eq("chapter_id",c.id)).data||[]).forEach(mk);
+$(".rd").onclick=async e=>{const m=e.target.closest("mark");if(m&&confirm("Remover este grifo?")){await sb.from("highlights").delete().eq("id",m.dataset.h);m.replaceWith(...m.childNodes)}};
+const tb=document.createElement("div");tb.className="tb";tb.hidden=true;tb.innerHTML=`<button data-f="0">Grifar</button><button data-f="1">★ Favoritar</button>`;document.body.append(tb);
+document.onselectionchange=()=>{const s=getSelection();if(!s.rangeCount||s.isCollapsed||!$(".rd")?.contains(s.anchorNode)||s.anchorNode!==s.focusNode){tb.hidden=true;return}const r=s.getRangeAt(0).getBoundingClientRect();tb.hidden=false;tb.style.top=Math.max(8,r.top-52)+"px";tb.style.left=Math.max(8,Math.min(innerWidth-190,r.left))+"px"};
+tb.onmousedown=e=>e.preventDefault();
+tb.onclick=async e=>{const f=e.target.dataset.f;if(f==null)return;const s=getSelection(),q=s.toString().slice(0,600);if(!q.trim())return;const {data:h,error}=await sb.from("highlights").insert({book_id:id,chapter_id:c.id,quote:q,fav:f==="1"}).select("id,quote,fav").single();if(error)return say(error.message);mk(h);s.removeAllRanges();tb.hidden=true;say(f==="1"?"Trecho favoritado!":"Trecho grifado!",1)};
+
+let mode=ls("nz-md")!=="scroll",lt,pg=0,tot=1,flip=false,evd=false;const GAP=32,vp=$("#vp"),rd=$(".rd");
+const WL=(await sb.from("chapters").select("position,words,title").eq("book_id",id)).data||[],sum=a=>a.reduce((t,x)=>t+(x.words||0),0),bef=sum(WL.filter(x=>x.position<n)),tw=Math.max(1,sum(WL)),cw=Math.max(1,c.words||1);
+function upd(){const dc=document.documentElement,sy=scrollY/Math.max(1,dc.scrollHeight-innerHeight),fr=mode?pg/tot:sy,pc=mode?tot:Math.max(1,rd.scrollHeight/(innerHeight*.8)),wpp=250,r0=bef+cw*fr,TP=Math.max(1,Math.ceil(tw/wpp)),pn=Math.min(TP,Math.floor(r0/wpp)+1),pct=n>=count&&(mode?pg>=tot-1:sy>.98)?100:Math.min(100,Math.round((r0+(mode?cw/tot:0))/tw*100));
+$("#ft").innerHTML=`<span>Página ${pn} de ${TP} · ${pct}%</span><span class="wl">${esc(U.email)}</span>`;$("#pg").style.width=pct+"%";saveP(fr,pct);endChk();
+if(mode&&pg>=tot-1&&!evd){evd=true;sb.from("reading_events").insert({book_id:id,chapter_id:c.id,pages:Math.max(.1,(c.words||0)/250)})}}
+function layout(){vp.classList.toggle("pgd",mode);$(".nav2").hidden=mode;$("#end").hidden=mode;
+document.body.classList.toggle("rdp",mode);if(mode){vp.style.width="";vp.style.height="";const vr=vp.getBoundingClientRect(),W=Math.floor(vr.width),H=Math.max(200,Math.floor((window.visualViewport?.height||innerHeight)-vr.top-76));vp.style.width=W+"px";vp.style.height=H+"px";rd.style.setProperty("--cw",W+"px");rd.style.setProperty("--ph",Math.max(120,H-48)+"px");rd.style.transform="none";tot=pagesOf(rd,W,GAP);pg=goEnd?tot-1:Math.min(pg,tot-1);goEnd=false;rd.style.transform=`translateX(${-pg*(W+GAP)}px)`}else{vp.style.width="";vp.style.height="";rd.style.transform="";rd.style.removeProperty("--ph");pg=0}upd()}
+function turn(d){if(flip)return;const np=pg+d;if(np<0||np>=tot){const m=n+d;if(m<1||m>count)return;goEnd=d<0;location.hash=`#/ler/${id}/${m}`;return}
+rd.style.transform=`translateX(${-np*(vp.clientWidth+GAP)}px)`;pg=np;upd();return;const st=vp.clientWidth+GAP,w=document.createElement("div"),cl=rd.cloneNode(true),o=d>0;w.className="pgf";w.append(cl);vp.append(w);
+cl.style.transform=`translateX(${-(o?pg:np)*st}px)`;if(o){pg=np;rd.style.transform=`translateX(${-np*st}px)`}
+const a=w.animate(o?[{transform:"rotateY(0)"},{transform:"rotateY(-110deg)"}]:[{transform:"rotateY(-110deg)"},{transform:"rotateY(0)"}],{duration:matchMedia("(prefers-reduced-motion:reduce)").matches?1:520,easing:"ease-in-out"});
+a.onfinish=()=>{w.remove();flip=false;pg=np;rd.style.transform=`translateX(${-pg*st}px)`;upd()}}
+const aaOpen=()=>{const d=sheetOpen("");const th=()=>document.documentElement.dataset.theme,b=(o,on,t)=>`<button class="btn ghost sm${on?" on":""}" data-o="${o}">${t}</button>`;
+const draw=()=>{d.innerHTML=`<div class="sw"><b>Leitura</b><button class="btn ghost sm" data-x>Fechar</button></div><div class="lab">Modo</div><div class="sg">${b("mp",mode,"Páginas")}${b("ms",!mode,"Rolagem")}</div><div class="lab">Tema</div><div class="sg">${[["light","Claro"],["sepia","Sépia"],["dark","Escuro"]].map(([k,t])=>b("t-"+k,th()===k,t)).join("")}</div><div class="lab">Fonte</div><div class="sg">${b("fs",ser,"Com serifa")}${b("fn",!ser,"Sem serifa")}</div><div class="lab">Tamanho do texto · ${fs}px</div><div class="sg">${b("a-",0,"A−")}${b("a+",0,"A+")}</div><div class="lab">Espaço entre linhas</div><div class="sg">${[[1.5,"Compacto"],[1.8,"Normal"],[2.1,"Amplo"]].map(([v,t])=>b("l"+v,lh===v,t)).join("")}</div>`};draw();
+d.addEventListener("click",e=>{const o=e.target.closest("[data-o]")?.dataset.o;if(!o)return;
+if(o==="mp"||o==="ms"){mode=o==="mp";ls("nz-md",mode?"page":"scroll");layout()}
+else if(o[0]==="t"&&o[1]==="-"){document.documentElement.dataset.theme=o.slice(2);ls("nz-th",o.slice(2))}
+else if(o==="fs"||o==="fn"){ser=o==="fs";ls("nz-ff",ser?"serif":"sans");ap();layout()}
+else if(o==="a-"||o==="a+"){setfs(fs+(o==="a+"?1:-1));layout()}
+else if(o[0]==="l"){lh=+o.slice(1);ls("nz-lh",lh);ap();layout()}
+draw()})};
+$("#aa").onclick=aaOpen;
+vp.onclick=e=>{if(!mode||!getSelection().isCollapsed||e.target.closest("mark,button,a"))return;const r=vp.getBoundingClientRect();turn(e.clientX>r.left+r.width/2?1:-1)};
+let sx=null;vp.ontouchstart=e=>{sx=e.touches[0].clientX};vp.ontouchend=e=>{if(!mode||sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)turn(dx<0?1:-1)};
+document.onkeydown=e=>{if(mode&&/^Arrow(Left|Right)$/.test(e.key))turn(e.key==="ArrowRight"?1:-1)};
+const ns=document.createElement("div");ns.className="sheet";ns.hidden=true;document.body.append(ns);
+$("#nt").onclick=async()=>{if(!ns.hidden){ns.hidden=true;return}const {data}=await sb.from("highlights").select("id,quote,fav,chapters(position)").eq("book_id",id).order("created_at");ns.innerHTML=`<b>Meus grifos neste livro</b>`+((data||[]).map(h=>`<div class="row"><a href="#" data-p="${h.chapters?.position}" data-h="${h.id}">${h.fav?"★ ":""}${esc(h.quote)}</a></div>`).join("")||`<p class="empty">Selecione um trecho enquanto lê para grifar.</p>`);ns.hidden=false};
+ns.onclick=e=>{const a=e.target.closest("a");if(!a)return;e.preventDefault();ns.hidden=true;if(+a.dataset.p===n){const m=$(`mark[data-h="${a.dataset.h}"]`);if(m){if(mode){pg=Math.floor(m.offsetLeft/(vp.clientWidth+GAP));layout()}else m.scrollIntoView({block:"center"})}}else location.hash=`#/ler/${id}/${a.dataset.p}`};
+const pr0=(await sb.from("reading_progress").select("chapter_id,frac").eq("book_id",id).maybeSingle()).data,fr0=pr0&&pr0.chapter_id===c.id&&!goEnd?+pr0.frac:0,mine=(await sb.from("reviews").select("id").eq("book_id",id).eq("user_id",U.id).maybeSingle()).data;
+let stm,endS=false;const saveP=(f,q)=>{clearTimeout(stm);stm=setTimeout(()=>sb.from("reading_progress").upsert({user_id:U.id,book_id:id,chapter_id:c.id,frac:f,position_pct:q}),900)};
+const endChk=()=>{if(endS||mine||n<count)return;const dn=mode?pg>=tot-1:scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)>.97;if(!dn)return;endS=true;const d=document.createElement("div");d.className="sheet gl";d.innerHTML=`<div class="sw"><span><b>Você chegou ao fim.</b><small>Conte para outras leitoras o que achou.</small></span><span><a class="btn sm" href="#/livro/${id}/avaliar">Avaliar</a> <button class="btn ghost sm" data-x>Depois</button></span></div>`;d.onclick=e=>{if(e.target.closest("[data-x],a"))d.remove()};document.body.append(d)};
+$("#ix").onclick=()=>sheetOpen(`<div class="sw"><b>Índice</b><button class="btn ghost sm" data-x>Fechar</button></div>`+WL.map(x=>`<div class="row"><a href="#/ler/${id}/${x.position}">${x.position===n?"<b>":""}${esc(clean(x.title)||"Capítulo "+x.position)}${x.position===n?"</b>":""}</a></div>`).join(""));
+$("#mm").onclick=()=>{const s=sheetOpen(`<div class="sw"><b>Menu</b><button class="btn ghost sm" data-x>Fechar</button></div><div class="row"><a href="#" data-a="ab">Sobre o livro</a></div><div class="row"><a href="#" data-a="tp">Trechos mais destacados</a></div><div class="row"><a href="#/livro/${id}/avaliar">Avaliar este livro</a></div>`);
+s.addEventListener("click",async e=>{const a=e.target.closest("[data-a]");if(!a)return;e.preventDefault();if(a.dataset.a==="ab")sheetOpen(`<div class="sw"><b>Sobre o livro</b><button class="btn ghost sm" data-x>Fechar</button></div>${b.cover_path?`<img class="av" src="${esc(b.cover_path)}" alt="">`:""}<b>${esc(b.title)}</b><small>${esc(b.pen_name)}</small><p>${esc(b.synopsis)}</p><small>${esc([b.genre,b.tropes].filter(Boolean).join(" · "))}</small><p><a href="#/livro/${id}">Abrir a página do livro</a></p>`);else{const {data}=await sb.rpc("trechos_populares",{p_book:id});sheetOpen(`<div class="sw"><b>Trechos mais destacados</b><button class="btn ghost sm" data-x>Fechar</button></div>`+((data||[]).map(x=>`<div class="row"><span>“${esc(x.quote)}”<small>${x.n} ${x.n>1?"leitoras destacaram":"leitora destacou"}</small></span></div>`).join("")||`<p class="empty">Ainda não há trechos destacados.</p>`))}})};
+rd.querySelectorAll("img").forEach(im=>{if(!im.complete)im.addEventListener("load",()=>{clearTimeout(lt);lt=setTimeout(()=>{if(mode)layout()},80)})});
+layout();if(fr0){if(mode){pg=Math.min(tot-1,Math.floor(fr0*tot));layout()}else scrollTo(0,fr0*(document.documentElement.scrollHeight-innerHeight))}document.fonts?.ready.then(()=>layout());onresize=()=>{if(mode)layout()};
+app.oncontextmenu=e=>{if(e.target.closest(".rd"))e.preventDefault()};
+await sb.from("library").upsert({user_id:U.id,book_id:id});
+await sb.from("reading_progress").upsert({user_id:U.id,book_id:id,chapter_id:c.id,position_pct:Math.round(n/Math.max(count,1)*100),frac:fr0});
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();sb.from("reading_events").insert({book_id:id,chapter_id:c.id,pages:Math.max(.1,(c.words||0)/250)})}}).observe($("#end"))}
+
+async function biblioteca(){
+const {data}=await sb.from("library").select("books(id,title,pen_name,cover_path)").order("added_at",{ascending:false});
+const L=(data||[]).map(r=>r.books).filter(Boolean);
+app.innerHTML=`<h1>Minha biblioteca</h1>`+(L.length?`<div class="grid">${L.map(card).join("")}</div>`:`<p class="empty">Sua biblioteca está vazia. Escolha um livro no início.</p>`)}
+
+const load=s=>new Promise((r,j)=>{const i=new Image();i.onload=()=>r(i);i.onerror=j;i.src=s});
+async function shrink(src,type,max){
+const i=await load(src),k=Math.min(1,max/i.width),w=Math.max(1,Math.round(i.width*k)),h=Math.max(1,Math.round(i.height*k)),c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(i,0,0,w,h);
+const png=type==="image/png";let orn=false;
+if(png){const t=Math.min(48,w),s=Math.max(1,Math.round(h*t/w)),q=document.createElement("canvas");q.width=t;q.height=s;const y=q.getContext("2d");y.drawImage(i,0,0,t,s);const d=y.getImageData(0,0,t,s).data;let a=0,l=0,n=0;for(let p=0;p<d.length;p+=4){if(d[p+3]>40){n++;l+=.299*d[p]+.587*d[p+1]+.114*d[p+2]}else a++}orn=a/(d.length/4)>.05&&n>0&&l/n<110}
+return{src:c.toDataURL(png?"image/png":"image/jpeg",.82),orn}}
+const fileURL=f=>new Promise(r=>{const x=new FileReader();x.onload=()=>r(x.result);x.readAsDataURL(f)});
+const words=h=>h.replace(/<[^>]+>/g," ").split(/\s+/).filter(Boolean).length;
+
+function pagesOf(el,W,G){const base=el.getBoundingClientRect().left;let mx=0;const sw=Math.max(1,Math.round((el.scrollWidth+G)/(W+G)));try{const r=document.createRange();r.selectNodeContents(el);for(const q of r.getClientRects())if(q.width||q.height)mx=Math.max(mx,q.left-base)}catch(e){}return Math.max(sw,Math.floor(mx/(W+G)+.02)+1)}
+let LASTTOC=0;
+function split(html,fb){
+const d=new DOMParser().parseFromString(html,"text/html"),out=[];let cur=null;LASTTOC=0;
+const txt=e=>e.textContent.replace(/\u00a0/g," ").trim();
+/* linha de sumário do Word: link interno curto, ou "Título ..... 12" */
+const toc=e=>{const t=txt(e);if(!t)return false;
+if(e.tagName==="P"&&e.children.length===1&&e.firstElementChild.matches('a[href^="#"]')&&txt(e.firstElementChild)===t&&t.length<90)return true;
+if(e.tagName==="P"&&t.length<90&&/^.{1,80}?(\t|\.{3,}|\s{3,})\s*\d{1,4}$/.test(t)&&(e.querySelector('a[href^="#"]')||/\t/.test(e.textContent)||/\.{3,}/.test(t)))return true;
+if(/^(sum[áa]rio|[ií]ndice|tabela de conte[úu]do)$/i.test(t))return true;return false};
+const real=e=>/^H[12]$/.test(e.tagName)&&txt(e)&&!toc(e),kids=[...d.body.children],useH=kids.filter(real).length>=2;
+const isH=e=>useH?real(e):(real(e)||(e.tagName==="P"&&txt(e).length<50&&/^\s*(cap[ií]tulo|pr[óo]logo|ep[ií]logo)\b/i.test(txt(e))&&!toc(e)));
+kids.forEach(e=>{if(toc(e)){LASTTOC++;return}
+if(isH(e)){cur={title:clean(txt(e))||fb,html:""};out.push(cur)}
+else{if(e.tagName==="P"&&!txt(e)&&!e.querySelector("img"))return;if(!cur){if(!txt(e)&&!e.querySelector("img"))return;cur={title:fb,html:""};out.push(cur)}cur.html+=e.outerHTML}});
+return out.filter(c=>words(c.html)>0||/<img/.test(c.html))}
+
+async function lerDocx(f){
+const r=await mammoth.convertToHtml({arrayBuffer:await f.arrayBuffer()},{convertImage:mammoth.images.imgElement(async im=>{const s=await shrink(`data:${im.contentType};base64,${await im.read("base64")}`,im.contentType,900);return{src:s.src,alt:"",class:s.orn?"orn":""}})});
+return split(r.value,"Início")}
+
+
+const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+let CATS=[];
+async function cats(){if(!CATS.length){const {data}=await sb.from("categories").select("id,slug,name,kind").order("position");CATS=data||[]}return CATS}
+
+async function livros(slug){
+const [cs,{data:bs}]=await Promise.all([cats(),sb.from("books").select("id,title,pen_name,cover_path,genre,tropes,code,release_date,book_categories(category_id)").eq("status","published").order("created_at",{ascending:false})]);
+let G=slug||"";
+app.innerHTML=`<h1>Livros</h1><input id="q" type="search" placeholder="Buscar por título, autora, trope ou código"><div class="chips"><button class="btn ghost sm" data-c="">Todos</button></div><div class="lab">Gêneros</div><div class="chips sc">${cs.filter(c=>c.kind!=="trope").map(c=>`<button class="btn ghost sm" data-c="${esc(c.slug)}">${esc(c.name)}</button>`).join("")}</div><div class="lab">Tropes</div><div class="chips sc">${cs.filter(c=>c.kind==="trope").map(c=>`<button class="btn ghost sm" data-c="${esc(c.slug)}">${esc(c.name)}</button>`).join("")}</div><div id="gr"></div>`;
+const f=()=>{const c=cs.find(x=>x.slug===G),q=norm($("#q").value),L=(bs||[]).filter(b=>(!c||(b.book_categories||[]).some(k=>k.category_id===c.id))&&(!q||norm([b.title,b.pen_name,b.genre,b.tropes,b.code].join(" ")).includes(q)));
+document.querySelectorAll("[data-c]").forEach(x=>x.classList.toggle("on",x.dataset.c===G));
+$("#gr").innerHTML=L.length?`<div class="grid">${L.map(card).join("")}</div>`:`<p class="empty">${(bs||[]).length?"Nenhum livro encontrado nesta categoria.":"Ainda não há livros publicados. Em breve!"}</p>`};
+$("#q").oninput=f;app.onclick=e=>{const c=e.target.dataset.c;if(c!=null){G=c;history.replaceState(null,"","#/livros"+(c?"/"+c:""));f()}};f()}
+
+const TABS=[["biblioteca","Biblioteca"],["painel","Painel"],["conta","Conta"]];
+async function autora(tab,id){
+if(P?.role!=="author"){app.innerHTML=`<h1>Área da autora</h1><div class="card"><p>Qualquer pessoa pode publicar no Natalize. Ative o perfil de autora para ter biblioteca, painel e conta.</p><button class="btn" id="ba">Quero publicar</button></div>`;
+$("#ba").onclick=async()=>{const {error}=await sb.rpc("set_my_role",{p_role:"author"});if(error)return say(error.message);say("Perfil de autora ativado!",1);setUser(U)};return}
+tab=TABS.some(t=>t[0]===tab)||tab==="livro"?tab:"biblioteca";
+app.innerHTML=`<h1>Área da autora</h1><div class="chips">${TABS.map(([k,n])=>`<a class="btn ghost sm${k===tab||(tab==="livro"&&k==="biblioteca")?" on":""}" href="#/autora/${k}">${n}</a>`).join("")}</div><div id="tab"><p class="empty">Carregando…</p></div>`;
+await({biblioteca:abiblioteca,painel:apainel,conta:aconta,livro:livroWiz}[tab])($("#tab"),id)}
+
+
+let W=null;
+const AIT={approved:"Verificado",pending:"Aguardando verificação",flagged:"Em revisão (possível IA)"};
+async function abiblioteca(box){
+const {data:mine}=await sb.from("books").select("id,title,status,code,ai_status,release_mode,release_date").eq("author_id",U.id).order("created_at",{ascending:false});
+box.innerHTML=`<button class="btn" id="nb">＋ Criar novo livro</button><h2>Meus livros</h2><div id="mine">${(mine||[]).map(b=>`<div class="row"><span>${esc(b.title)}<small>${b.status==="published"?(b.release_date&&b.release_date>new Date().toISOString().slice(0,10)?"Agendado para "+b.release_date.split("-").reverse().join("/"):"Publicado"):"Rascunho"} · ${AIT[b.ai_status]||""} · ${esc(b.code)}</small></span><span><a class="btn ghost sm" href="#/autora/livro/${b.id}">Editar</a> <button class="btn ghost sm" data-t="${b.id}" data-s="${b.status}" data-a="${b.ai_status}">${b.status==="published"?"Despublicar":"Publicar"}</button> <button class="btn ghost red sm" data-x="${b.id}">Excluir</button></span></div>`).join("")||`<p class="empty">Você ainda não criou nenhum livro.</p>`}</div>`;
+$("#nb").onclick=()=>{W=null;draft=null;location.hash="#/autora/livro"};
+box.onclick=async e=>{const t=e.target.dataset;
+if(t.t){if(t.s!=="published"&&t.a!=="approved"){say("Verificando o conteúdo…",1);const {data:v,error:ve}=await sb.functions.invoke("verify-book",{body:{book_id:t.t}});if(ve||!v)return say("A verificação falhou. Tente de novo.");if(v.status!=="approved"){say("O filtro sinalizou este livro. Ele fica em revisão.");return autora("biblioteca")}}
+const {error}=await sb.from("books").update({status:t.s==="published"?"draft":"published"}).eq("id",t.t);if(error)say(error.message);autora("biblioteca")}
+if(t.x&&confirm("Excluir este livro e todos os capítulos? Não dá para desfazer.")){await sb.from("books").delete().eq("id",t.x);autora("biblioteca")}}}
+
+const blank=()=>({id:null,status:"draft",language:"pt-BR",title:"",subtitle:"",series_name:"",series_number:"",edition:"",author_first:(P?.name||"").split(" ")[0]||"",author_last:(P?.name||"").split(" ").slice(1).join(" "),contributors:[],synopsis:"",rights:null,explicit:null,age_min:"",age_max:"",cats:[],keywords:["","","","","","",""],release_mode:"now",release_date:"",ai_use:null,isbn:"",publisher:"",accessibility:"unknown",hasCover:false,cover_src:"",nch:0,declared:false,ms_name:"",ms_at:""});
+const fromRow=(b,bc,n)=>({...blank(),id:b.id,status:b.status,language:b.language,title:b.title,subtitle:b.subtitle,series_name:b.series_name,series_number:b.series_number??"",edition:b.edition??"",author_first:b.author_first,author_last:b.author_last,contributors:b.contributors||[],synopsis:b.synopsis,rights:b.rights,explicit:b.explicit,age_min:b.age_min??"",age_max:b.age_max??"",cats:(bc||[]).map(x=>x.category_id),keywords:[...(b.keywords||[]),"","","","","","",""].slice(0,7),release_mode:b.release_mode,release_date:b.release_date||"",ai_use:b.ai_use,isbn:b.isbn,publisher:b.publisher,accessibility:b.accessibility,hasCover:!!b.cover_path,cover_src:b.cover_path||"",nch:n||0,ms_name:b.manuscript_name||"",ms_at:b.manuscript_at||""});
+const ROLES=["Autor","Editor","Ilustrador","Tradutor","Prefaciador","Narrador"];
+const rd=n=>document.querySelector(`input[name=${n}]:checked`)?.value??null;
+const val=k=>$(k)?.value??"";
+const radio=(n,v,cur,txt)=>`<label><input type="radio" name="${n}" value="${v}" ${String(cur)===String(v)?"checked":""} style="width:auto;margin-right:.5rem">${txt}</label>`;
+const ages=(id,cur)=>`<select id="${id}"><option value="">Selecionar</option>${Array.from({length:19},(_,i)=>`<option value="${i}" ${String(cur)===String(i)?"selected":""}>${i}${i===18?"+":""}</option>`).join("")}</select>`;
+
+function collect(step){
+if(step===1){Object.assign(W,{language:val("#lg"),title:val("#ti"),subtitle:val("#st"),series_name:val("#sn2"),series_number:val("#sno"),edition:val("#ed"),author_first:val("#af"),author_last:val("#al2"),synopsis:val("#sy"),rights:rd("rt"),explicit:rd("ex")===null?null:rd("ex")==="1",age_min:val("#a1"),age_max:val("#a2"),release_mode:rd("rm")||"now",release_date:val("#rdt")});
+W.contributors=[...document.querySelectorAll(".ctr")].map(r=>({role:r.querySelector("select").value,first:r.querySelectorAll("input")[0].value.trim(),last:r.querySelectorAll("input")[1].value.trim()}));
+W.keywords=[...document.querySelectorAll(".kw")].map(i=>i.value)}
+if(step===2){Object.assign(W,{ai_use:rd("ai"),isbn:val("#isb"),publisher:val("#pb"),accessibility:rd("ac")||"unknown"})}
+if(step===3){W.declared=!!$("#dc")?.checked}}
+
+function wizSteps(n){return`<div class="chips wz">${["1 · Detalhes","2 · Conteúdo","3 · Revisar"].map((t,i)=>`<button type="button" class="btn ghost sm${i+1===n?" on":""}" data-go="${i+1}">${t}</button>`).join("")}</div>`}
+
+const lkey=()=>"nz-wiz:"+U.id+":"+(W?.id||"novo"),lrm=k=>{try{localStorage.removeItem(k);localStorage.removeItem(k+":ch")}catch(e){}};
+let STM;const lsave=()=>{clearTimeout(STM);STM=setTimeout(lsaveNow,500);cloudSoon()};
+function lsaveNow(){if(!W||!U||!W._d)return;const {_cover,_step,_restored,_d,...rest}=W,k=lkey();try{localStorage.setItem(k,JSON.stringify({ts:Date.now(),step:W._step||1,W:rest}));if(draft?.length){try{localStorage.setItem(k+":ch",JSON.stringify(draft))}catch(e){}}const el=$("#asv");if(el)el.textContent="Guardado automaticamente neste aparelho às "+new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}catch(e){}}
+addEventListener("pagehide",lsaveNow);document.addEventListener("visibilitychange",()=>{if(document.hidden){lsaveNow();cloudSave()}});
+function lrestore(k,upd){try{const o=JSON.parse(ls(k)||"null");if(!o||!o.W||(upd&&o.ts<=Date.parse(upd)))return;Object.assign(W,o.W,{id:W.id,status:W.status,hasCover:W.hasCover,cover_src:W.cover_src,nch:W.nch});W._step=o.step||1;W._d=true;W._restored=1;const c=ls(k+":ch");if(c){try{draft=JSON.parse(c)}catch(e){}}}catch(e){}}
+async function livroWiz(box,id){
+const csP=cats();
+if(id){const [{data:b},{data:bc},{count}]=await Promise.all([sb.from("books").select("*").eq("id",id).maybeSingle(),sb.from("book_categories").select("category_id").eq("book_id",id),sb.from("chapters").select("id",{count:"exact",head:true}).eq("book_id",id)]);
+if(!b){location.hash="#/autora/biblioteca";return}if(!W||W.id!==id){W=fromRow(b,bc,count);draft=null;lrestore(lkey(),b.updated_at)}}
+else if(!W||W.id){W=blank();draft=null;lrestore(lkey())}
+const cs=await csP;wiz(box,cs,W._step||1)}
+
+const msBox=()=>{const when=W.ms_at?new Date(W.ms_at).toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"}):"";
+if(W.ms_name)return`<div class="okb"><b>✓ O upload do manuscrito “${esc(W.ms_name)}” foi realizado com sucesso!</b><small>${when?"Carregado em "+when+". ":""}${draft?draft.length+" capítulos encontrados."+(W.id?" Toque em Salvar para enviá-los ao Natalize.":""):W.nch+" capítulos salvos."}</small></div>`;
+if(W.nch||draft)return`<div class="okb"><b>✓ Manuscrito salvo no Natalize</b><small>${draft?draft.length:W.nch} capítulos. Envie um novo arquivo só se quiser substituí-los.</small></div>`;
+return""};
+function wiz(box,cs,step){
+const today=new Date(),iso=d=>d.toISOString().slice(0,10),mn=iso(new Date(today.getTime()+864e5)),mxd=new Date(today);mxd.setMonth(mxd.getMonth()+18);
+const sv=W.status==="published"?"Salvar alterações":"Salvar como rascunho",wantSave=W.status==="published"?"published":"draft";
+const catsSum=()=>{const e=$("#csel");if(!e)return;const sel=W.cats.map(id=>cs.find(c=>c.id===id)).filter(Boolean),g=sel.filter(c=>c.kind!=="trope").length;e.innerHTML=sel.map(c=>`<span>${esc(c.name)}</span>`).join("")||`<small>Nenhuma selecionada ainda.</small>`;$("#ccn").textContent=`${g} de 3 gêneros · ${sel.length-g} de 8 tropes`};
+const relNote=()=>W.status==="published"&&W.release_date?(W.release_date<=todayBR()?note("Este livro foi lançado em "+esc(longD(W.release_date))+".",""):note("Este livro está agendado para "+esc(longD(W.release_date))+".","As leitoras veem a contagem regressiva até essa data.")):note("Agendamento de lançamento","Você pode definir datas de lançamento com até 18 meses de antecedência.");
+if(step===1){
+box.innerHTML=wizSteps(1)+`
+<div class="card"><label>Idioma<select id="lg">${[["pt-BR","Português"],["en","English"],["es","Español"]].map(([v,n])=>`<option value="${v}" ${W.language===v?"selected":""}>${n}</option>`).join("")}</select></label></div>
+<div class="card"><label>Título do livro<input id="ti" maxlength="120" value="${esc(W.title)}"></label><label>Subtítulo (opcional)<input id="st" maxlength="120" value="${esc(W.subtitle)}"></label></div>
+<div class="card"><b>Série</b><label>Nome da série (opcional)<input id="sn2" maxlength="120" value="${esc(W.series_name)}"></label><label>Número no volume (opcional)<input id="sno" type="number" min="1" value="${esc(W.series_number)}"></label></div>
+<div class="card"><label>Número da edição (opcional)<input id="ed" type="number" min="1" value="${esc(W.edition)}"></label></div>
+<div class="card"><b>Autor ou colaborador principal</b><small>Pseudônimos são permitidos.</small><label>Nome<input id="af" maxlength="60" value="${esc(W.author_first)}"></label><label>Sobrenome<input id="al2" maxlength="60" value="${esc(W.author_last)}"></label></div>
+<div class="card"><b>Colaboradores (opcional, até 9)</b>${W.contributors.map((c,i)=>`<div class="ctr"><select>${ROLES.map(r=>`<option ${c.role===r?"selected":""}>${r}</option>`).join("")}</select><input placeholder="Nome" value="${esc(c.first)}"><input placeholder="Sobrenome" value="${esc(c.last)}"><button class="btn ghost red sm" data-rm="${i}">Remover</button></div>`).join("")}${W.contributors.length<9?`<button class="btn ghost sm" data-add="1">Adicionar</button>`:""}</div>
+<div class="card"><label>Descrição<textarea id="sy" maxlength="4000" rows="8">${esc(W.synopsis)}</textarea></label><small id="cn">${4000-W.synopsis.length} caracteres restantes</small></div>
+<div class="card"><b>Direitos de publicação</b>${radio("rt","own",W.rights,"Eu possuo os direitos autorais e os direitos de publicação necessários.")}${radio("rt","public_domain",W.rights,"Este é um livro em domínio público.")}</div>
+<div class="card"><b>Público principal</b><div class="lab">Imagens ou título sexualmente explícitos</div><small>A capa ou o interior do livro contêm imagens sexualmente explícitas ou o título do livro contém linguagem sexualmente explícita?</small>${radio("ex","1",W.explicit===null?"":W.explicit?1:0,"Sim")}${radio("ex","0",W.explicit===null?"":W.explicit?1:0,"Não")}<div class="lab">Idade de leitura (opcional)</div>${note("Sobre a faixa etária","As faixas etárias de leitura são recomendadas apenas para livros para crianças e jovens adultos. Para outros tipos de conteúdo, deixe em branco.")}<label>Mínimo${ages("a1",W.age_min)}</label><label>Máximo${ages("a2",W.age_max)}</label></div>
+<div class="card cats"><b>Categorias</b><small>Escolha até 3 gêneros e até 8 tropes. Eles ajudam as leitoras a encontrar seu livro.</small><h4>Seu livro aparece em</h4><div class="sel" id="csel"></div><p class="cnt" id="ccn"></p><h4>Gêneros</h4><div class="pick">${cs.filter(c=>c.kind!=="trope").map(c=>`<button type="button" class="btn ghost sm${W.cats.includes(c.id)?" on":""}" data-k="${c.id}">${esc(c.name)}</button>`).join("")}</div><h4>Tropes</h4><input id="cq" type="search" placeholder="Buscar trope (ex.: segunda chance)"><div class="box" style="margin-top:8px"><div class="pick" id="ctp">${cs.filter(c=>c.kind==="trope").map(c=>`<button type="button" class="btn ghost sm${W.cats.includes(c.id)?" on":""}" data-k="${c.id}">${esc(c.name)}</button>`).join("")}</div></div></div>
+<div class="card"><b>Palavras-chave</b><small>Até 7, com até 50 caracteres cada. Ex.: slow burn, inimigos para amantes.</small>${W.keywords.map(k=>`<input class="kw" maxlength="50" value="${esc(k)}">`).join("")}</div>
+<div class="card"><b>Opção de publicação</b>${radio("rm","now",W.release_mode,"Estou pronta para lançar meu livro agora")}${radio("rm","preorder",W.release_mode,"Agendar lançamento (o livro só aparece para as leitoras na data)")}${relNote()}<label>Data de lançamento<input id="rdt" type="date" min="${mn}" max="${iso(mxd)}" value="${esc(W.release_date)}"></label></div>
+<button class="btn ghost" data-save="1">${sv}</button><button class="btn" data-go="2">Salvar e continuar</button>`;
+$("#sy").oninput=()=>$("#cn").textContent=4000-$("#sy").value.length+" caracteres restantes";
+catsSum();$("#cq").oninput=()=>{const q=norm($("#cq").value);document.querySelectorAll("#ctp [data-k]").forEach(b=>b.hidden=!!q&&!norm(b.textContent).includes(q))}}
+if(step===2){
+box.innerHTML=wizSteps(2)+`
+<div class="card"><b>Manuscrito</b><small>Envie o conteúdo do livro em .docx. Recomendamos um arquivo Word com “Título 1” em cada capítulo.</small><input id="fl" type="file" accept=".docx" hidden><label for="fl" class="btn">Fazer upload do manuscrito</label><div id="mst">${msBox()}</div><p class="sub">No Google Docs: Arquivo, Fazer download, Microsoft Word (.docx). Use “Título 1” em cada capítulo: é com eles que o índice do leitor é criado.</p><div id="pv">${draft?`<p><b>${draft.length} capítulos encontrados</b></p>`:""}</div></div>
+<div class="card"><b>Capa do livro</b><small>${W.hasCover?"Você já tem uma capa salva. Envie outra só para trocar.":"Opcional."} JPG ou PNG. A capa passa pela verificação de IA.</small><label>Arquivo da capa<input id="cv" type="file" accept="image/*"></label></div>
+<div class="card"><b>Conteúdo gerado por IA</b><small>Você usou ferramentas de IA para criar textos, imagens ou traduções no seu livro? Por enquanto, o Natalize só publica obras feitas por pessoas.</small>${radio("ai","no",W.ai_use,"Não")}${radio("ai","yes",W.ai_use,"Sim")}</div>
+<div class="card"><label>ISBN (opcional)<input id="isb" maxlength="20" value="${esc(W.isbn)}"></label><label>Autor/editora (opcional)<input id="pb" maxlength="120" value="${esc(W.publisher)}"></label></div>
+<div class="card"><b>Recursos de acessibilidade</b><small>Suas imagens informativas têm texto alternativo?</small>${[["unknown","Não sei se minhas imagens informativas incluem texto alternativo"],["none","Nenhuma das imagens informativas inclui texto alternativo"],["some","Algumas imagens informativas incluem texto alternativo"],["all","Todas as imagens informativas incluem texto alternativo"]].map(([v,t])=>radio("ac",v,W.accessibility,t)).join("")}</div>
+<button class="btn ghost" data-pv="1">Pré-visualizar</button><button class="btn ghost" data-go="1">‹ Voltar para Detalhes</button><button class="btn ghost" data-save="1">${sv}</button><button class="btn" data-go="3">Salvar e continuar</button>`;
+$("#fl").onchange=async e=>{const f=e.target.files[0];if(!f)return;$("#pv").innerHTML=`<p class="sub">Lendo o arquivo…</p>`;try{draft=await lerDocx(f);W._d=true;cloudSoon()}catch(x){draft=null;$("#pv").innerHTML="";return say("Não consegui ler esse arquivo. Confira se é um .docx.")}
+W.ms_name=f.name.slice(0,200);W.ms_at=new Date().toISOString();W._d=true;lsave();if($("#mst"))$("#mst").innerHTML=msBox();$("#pv").innerHTML=`<p><b>${draft.length} capítulos encontrados</b></p>${LASTTOC?`<p class="sub">Removi ${LASTTOC} linhas do sumário do Word: o índice do leitor é criado automaticamente.</p>`:""}${draft.length<2?`<p class="sub">Só achei um capítulo. Marque cada capítulo com “Título 1” para o índice funcionar.</p>`:""}`+draft.map((c,i)=>`<div class="row"><span>${i+1}. ${esc(c.title)}</span><small>${words(c.html)} palavras</small></div>`).join("")}}
+if(step===3){
+const cn=W.cats.map(id=>cs.find(c=>c.id===id)?.name).filter(Boolean),kw=W.keywords.map(k=>k.trim()).filter(Boolean),nch=draft?draft.length:W.nch,cf=$("#cv")?.files?.[0];
+const miss=[!W.title.trim()&&"título",!(W.author_first+W.author_last).trim()&&"autor",!W.synopsis.trim()&&"descrição",!W.rights&&"direitos de publicação",W.explicit===null&&"público principal",!W.cats.some(id=>{const c=cs.find(x=>x.id===id);return c&&c.kind!=="trope"})&&"ao menos 1 gênero",!nch&&"manuscrito",W.ai_use===null&&"declaração de IA",W.release_mode==="preorder"&&!W.release_date&&"data de lançamento"].filter(Boolean);
+box.innerHTML=wizSteps(3)+`<div class="card"><b>${esc(W.title)||"Sem título"}</b>${W.subtitle?`<small>${esc(W.subtitle)}</small>`:""}<small>${esc((W.author_first+" "+W.author_last).trim())}${W.series_name?" · "+esc(W.series_name)+(W.series_number?" #"+esc(W.series_number):""):""}${W.edition?" · "+esc(W.edition)+"ª edição":""}</small><small>${cn.map(esc).join(" · ")||"Sem categoria"}</small><small>${kw.map(esc).join(", ")||"Sem palavras-chave"}</small><small>${nch} capítulos · ${W.release_mode==="preorder"&&W.release_date?"Lançamento em "+W.release_date.split("-").reverse().join("/"):"Lançamento imediato"}</small></div>
+${W.release_mode==="preorder"&&W.release_date?note("Lançamento agendado para "+esc(longD(W.release_date)),"O livro só aparece para as leitoras nesse dia. Até lá, elas veem a contagem regressiva."):""}${miss.length?`<div class="card"><b>Falta preencher</b><small>${miss.join(", ")}</small></div>`:""}${W.ai_use==="yes"?`<div class="card"><b>Conteúdo de IA declarado</b><small>O Natalize não publica livros com conteúdo gerado por IA. Você pode salvar como rascunho.</small></div>`:""}
+<div class="card"><label><input id="dc" type="checkbox" style="width:auto;margin-right:.5rem" ${W.declared?"checked":""}>Declaro que o texto e a capa são de minha autoria e não foram gerados por IA.</label><small>Todo livro passa por uma verificação automática de texto e capa antes de ser publicado. Ela pode errar: se for sinalizado indevidamente, o livro fica em revisão.</small></div>
+<button class="btn ghost" data-pv="1">Pré-visualizar</button><button class="btn ghost" data-go="2">‹ Voltar para Conteúdo</button><button class="btn ghost" data-save="1">${sv}</button>${W.status==="published"?"":`<button class="btn" data-pub="1" ${miss.length||W.ai_use!=="no"?"disabled":""}>Publicar</button>`}`;
+if(cf)W._cover=cf}
+W._step=step;
+box.insertAdjacentHTML("beforeend",`<small id="asv">${W.status==="published"?"Livro publicado: as alterações ficam neste aparelho até você tocar em Salvar alterações.":"Seu rascunho é salvo automaticamente no Natalize e neste aparelho."}</small>`);
+if(W._restored)box.insertAdjacentHTML("afterbegin",`<div class="card"><b>Recuperamos o que você estava preenchendo</b><small>Estava guardado neste aparelho. Se tinha escolhido capa ou manuscrito e eles não aparecem, é só enviar de novo.</small><button class="btn ghost sm" data-disc="1">Descartar e começar do zero</button></div>`);
+box.oninput=box.onchange=e=>{if(e.target.closest("#fl"))return;collect(step);W._cover=$("#cv")?.files?.[0]||W._cover;W._d=true;W._restored=0;lsave()};
+const after=r=>{wiz(box,cs,step);box.insertAdjacentHTML("afterbegin",`<div class="card"><b>${r.pub?"✓ Livro publicado":"✓ Salvo"}</b>${r.pub&&W.release_mode==="preorder"&&W.release_date>todayBR()?note("Lançamento agendado para "+esc(longD(W.release_date)),"O livro aparece para as leitoras nesse dia."):`<small>${esc(r.msg)}</small>`}<div class="chips" style="margin-top:8px"><a class="btn ghost sm" href="#/autora/biblioteca">Ir para a biblioteca</a><a class="btn ghost sm" href="#/autora/painel">Painel</a>${r.pub?`<a class="btn ghost sm" href="#/livro/${r.id}">Ver página do livro</a>`:""}</div></div>`);window.scrollTo({top:0,behavior:"smooth"});if(r.pub)pubOk(r);else if(!r.ok)dlg(`<h2>Livro salvo, mas ainda não publicado</h2><div class="okb"><b>${esc(r.msg)}</b></div><div class="acts"><button class="btn" data-x>Entendi</button></div>`)};
+box.onclick=async e=>{const t=e.target.dataset;
+if(t.disc){lrm(lkey());W=null;draft=null;return route()}
+if(t.k){collect(1);const kd=x=>cs.find(c=>c.id===x)?.kind==="trope"?"trope":"genre",i=W.cats.indexOf(t.k);if(i>=0)W.cats.splice(i,1);else{const lim=kd(t.k)==="trope"?8:3;if(W.cats.filter(x=>kd(x)===kd(t.k)).length>=lim)return say(kd(t.k)==="trope"?"Escolha no máximo 8 tropes.":"Escolha no máximo 3 gêneros.");W.cats.push(t.k)}e.target.classList.toggle("on",W.cats.includes(t.k));catsSum();W._d=true;lsave()}
+if(t.add){collect(1);if(W.contributors.length<9)W.contributors.push({role:"Autor",first:"",last:""});wiz(box,cs,1)}
+if(t.rm!=null){collect(1);W.contributors.splice(+t.rm,1);wiz(box,cs,1)}
+if(t.go){W._restored=0;collect(step);W._cover=$("#cv")?.files?.[0]||W._cover;W._d=true;cloudSave();const n=+t.go;if(n>1&&!W.title.trim())return say("Dê um título ao livro.");wiz(box,cs,n)}
+if(t.pv){collect(step);W._cover=$("#cv")?.files?.[0]||W._cover;preview()}
+if(t.save){collect(step);W._cover=$("#cv")?.files?.[0]||W._cover;const r=await persist(wantSave,e.target);if(r)after(r)}
+if(t.pub){collect(3);if(!W.declared)return say("Marque a declaração de autoria para publicar.");const r=await persist("published",e.target);if(r)after(r)}}}
+
+function pubOk(r){const sched=W.release_mode==="preorder"&&W.release_date>todayBR(),by=(W.author_first+" "+W.author_last).trim(),src=W.cover_src||"";
+dlg(`<h2>Parabéns!</h2><div class="pb">${src?`<img src="${esc(src)}" alt="">`:""}<div><b>${esc(W.title)}</b><span>Por ${esc(by)}</span></div></div>${sched?note("Lançamento agendado para "+esc(longD(W.release_date)),"O livro aparece para as leitoras nesse dia. Até lá, elas veem a contagem regressiva."):note("Seu livro já está no ar","Ele passou pela verificação e já aparece para as leitoras no Natalize.")}<h3>E agora?</h3><div class="nx3"><div><b>Compartilhe o link</b><small>Na página do livro, toque em Compartilhar.</small></div><div><b>Acompanhe no Painel</b><small>Veja leituras, avaliações e posição no ranking.</small></div><div><b>Comece o próximo</b><small>Reaproveite seus dados de autora em um novo livro.</small></div></div><div class="acts"><a class="btn" href="#/livro/${r.id}" data-x>Ver página do livro</a><a class="btn ghost" href="#/autora/livro" data-x>Criar outro livro</a><button class="btn ghost" data-x>Fechar</button></div>`)}
+async function preview(){
+let chs=draft?draft.map((c,i)=>({position:i+1,title:c.title,content:c.html})):null;
+if(!chs&&W.id)chs=(await sb.from("chapters").select("position,title,content").eq("book_id",W.id).order("position")).data;
+chs=chs||[];
+const src=W._cover?URL.createObjectURL(W._cover):W.cover_src,GAP=40;
+document.getElementById("kpv")?.remove();
+const o=document.createElement("div");o.id="kpv";
+let th=ls("nz-kth")||"light",fs=+ls("nz-kfs")||17,pages=[{t:"cover"}],gi=0,PW=0,PH=0,bld=0;
+o.innerHTML=`<div class="kt"><b>Pré-visualização</b><span><button class="btn ghost sm" data-a="th">Tema</button><button class="btn ghost sm" data-a="fm">A−</button><button class="btn ghost sm" data-a="fp">A+</button><button class="btn sm" data-a="x">Fechar</button></span></div><p class="sub kh">Assim o livro aparece num tablet, como no Kindle. Toque nas bordas ou deslize para virar a página.</p><div class="ipad"><div class="scr" id="ks"><div class="kc" id="kc"></div><div class="kv" id="kv"><article class="kd" id="kd"></article></div><div class="kg" id="kg"></div></div></div><div class="kf"><button class="btn ghost sm" data-a="pv">‹ Anterior</button><select id="kj" aria-label="Ir para o capítulo"></select><button class="btn ghost sm" data-a="nx">Próxima ›</button></div>`;
+document.body.append(o);document.body.style.overflow="hidden";
+const q=x=>o.querySelector(x),imgs=m=>Promise.race([Promise.all([...m.querySelectorAll("img")].map(i=>i.decode?i.decode().catch(()=>{}):0)),new Promise(r=>setTimeout(r,4000))]),
+cols=()=>`width:${PW}px;height:${PH}px;column-width:${PW}px;column-gap:${GAP}px;font-size:${fs}px;--ph:${Math.max(120,PH-30)}px`,
+html=c=>`<h2>${esc(clean(c.title)||"Capítulo "+c.position)}</h2>`+DOMPurify.sanitize(c.content);
+function show(){const p=pages[gi],kd=q("#kd"),kv=q("#kv"),kc=q("#kc");
+if(p.t==="cover"){kc.hidden=false;kv.hidden=true;kc.innerHTML=src?`<img src="${esc(src)}" alt="">`:`<div class="ph" style="display:flex">${esc(W.title)||"Sem título"}</div>`}
+else{kc.hidden=true;kv.hidden=false;if(kd.dataset.c!==p.c+"|"+fs){kd.dataset.c=p.c+"|"+fs;kd.style.cssText=cols();kd.classList.toggle("fm",FM(chs[p.c].title));kd.innerHTML=html(chs[p.c])}kd.style.transform=`translateX(${-p.p*(PW+GAP)}px)`}
+q("#kg").textContent=pages.length>1||!chs.length?`Página ${gi+1} de ${pages.length} · ${Math.round((gi+1)/pages.length*100)}%`:"";
+q("#kj").value=p.t?"cover":String(p.c)}
+async function build(){const my=++bld,w=Math.floor(Math.min(innerWidth-24,(innerHeight-230)*.75,580)),ip=q(".ipad"),kv=q("#kv"),kd=q("#kd");
+ip.style.width=w+"px";ip.style.height=Math.floor(w*4/3)+"px";q("#ks").className="scr "+th;
+PW=Math.floor(w-28-56);PH=Math.floor(w*4/3-28-26-50);kv.style.width=PW+"px";kv.style.height=PH+"px";kd.dataset.c="";
+q("#kg").textContent="Calculando páginas…";
+const m=document.createElement("article");m.className="kd";m.style.cssText=cols()+";position:absolute;left:0;top:0;visibility:hidden";kv.append(m);
+const np=[{t:"cover"}];
+for(let i=0;i<chs.length;i++){if(my!==bld){m.remove();return}m.classList.toggle("fm",FM(chs[i].title));m.innerHTML=html(chs[i]);await imgs(m);const n=pagesOf(m,PW,GAP);for(let p=0;p<n;p++)np.push({c:i,p})}
+m.remove();if(my!==bld)return;pages=np;gi=Math.min(gi,pages.length-1);
+q("#kj").innerHTML=`<option value="cover">Capa</option>`+chs.map((c,i)=>`<option value="${i}">${esc(clean(c.title)||"Capítulo "+(i+1))}</option>`).join("");show()}
+const go=d=>{const n=gi+d;if(n<0||n>=pages.length)return;gi=n;show()},close=()=>{bld++;o.remove();document.body.style.overflow="";document.removeEventListener("keydown",kk);removeEventListener("resize",rz);if(W._cover&&src)URL.revokeObjectURL(src)},
+kk=e=>{if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1);if(e.key==="Escape")close()};let rt;const rz=()=>{clearTimeout(rt);rt=setTimeout(build,300)};
+document.addEventListener("keydown",kk);addEventListener("resize",rz);
+o.onclick=e=>{const a=e.target.closest("[data-a]")?.dataset.a;
+if(a==="x")close();else if(a==="pv")go(-1);else if(a==="nx")go(1);
+else if(a==="th"){th=th==="light"?"sepia":th==="sepia"?"dark":"light";ls("nz-kth",th);q("#ks").className="scr "+th}
+else if(a==="fm"||a==="fp"){fs=Math.max(13,Math.min(26,fs+(a==="fp"?1:-1)));ls("nz-kfs",fs);build()}
+else if(e.target.closest("#ks")){const r=q("#ks").getBoundingClientRect(),x=(e.clientX-r.left)/r.width;if(x>.6)go(1);else if(x<.4)go(-1)}};
+q("#kj").onchange=e=>{const v=e.target.value;gi=v==="cover"?0:Math.max(0,pages.findIndex(p=>p.c===+v&&p.p===0));show()};
+let sx=null;q("#ks").ontouchstart=e=>{sx=e.touches[0].clientX};q("#ks").ontouchend=e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50){go(dx<0?1:-1);e.preventDefault()}};
+if(!chs.length)say("Envie o manuscrito para ver o livro inteiro. Por enquanto só a capa aparece.");
+await build()}
+async function persist(want,btn){
+const pub=want==="published",pg=prog(pub?"Enviando seu livro para publicação":"Salvando seu livro",["Salvando os detalhes","Enviando manuscrito e capa","Verificando o conteúdo","Finalizando"]);PGO=pg;let r;
+try{r=await persist0(want,btn)}catch(e){pg.err=e.message||String(e);r=undefined;btn.disabled=false}
+PGO=null;pg.end();
+if(!r&&pg.err)dlg(`<h2>Não foi possível ${pub?"enviar":"salvar"} o livro</h2><div class="okb" style="border-color:var(--cin)"><b>${esc(pg.err)}</b><small>Nada foi perdido: o que você preencheu continua guardado neste aparelho. Confira a conexão e tente de novo.</small></div><div class="acts"><button class="btn" data-x>Entendi</button></div>`);
+return r}
+async function persist0(want,btn){
+if(!W.title.trim())return say("Dê um título ao livro.");
+const kw=W.keywords.map(k=>k.trim()).filter(Boolean),cn=cats_name(),row={title:W.title.trim(),subtitle:W.subtitle.trim(),language:W.language,series_name:W.series_name.trim(),series_number:W.series_number?+W.series_number:null,edition:W.edition?+W.edition:null,author_first:W.author_first.trim(),author_last:W.author_last.trim(),pen_name:(W.author_first+" "+W.author_last).trim(),contributors:W.contributors.filter(c=>c.first||c.last),synopsis:W.synopsis.trim(),rights:W.rights,explicit:W.explicit,age_min:W.age_min===""?null:+W.age_min,age_max:W.age_max===""?null:+W.age_max,keywords:kw,tropes:kw.join(", ").slice(0,300),genre:cn,release_mode:W.release_mode,release_date:W.release_mode==="preorder"?(W.release_date||null):null,ai_use:W.ai_use,isbn:W.isbn.trim(),publisher:W.publisher.trim(),accessibility:W.accessibility};
+if(row.age_min!=null&&row.age_max!=null&&row.age_min>row.age_max)return say("A idade mínima não pode ser maior que a máxima.");
+if(row.release_mode==="preorder"&&!row.release_date)return say("Escolha a data de lançamento.");
+if(draft?.length&&W.ms_name){row.manuscript_name=W.ms_name.slice(0,200);row.manuscript_at=W.ms_at||new Date().toISOString()}
+const cf=W._cover;if(cf&&cf.size>7e6)return say("A capa passa de 7 MB.");
+btn.disabled=true;let cb="";
+if(cf){const raw=await fileURL(cf);cb=raw.split(",")[1];try{row.cover_path=(await shrink(raw,"image/jpeg",360)).src}catch(x){}}
+let id=W.id,r;
+if(id)r=await sb.from("books").update({...row,status:"draft"}).eq("id",id);else{r=await sb.from("books").insert({...row,status:"draft"}).select("id").single();id=r.data?.id}
+if(r.error){btn.disabled=false;return say(r.error.message)}
+if(draft?.length){PGO?.at(1);if(W.id)await sb.from("chapters").delete().eq("book_id",id);
+for(let i=0;i<draft.length;i+=4){const {error:e}=await sb.from("chapters").insert(draft.slice(i,i+4).map((c,k)=>({book_id:id,position:i+k+1,title:c.title,content:c.html})));if(e){btn.disabled=false;say("Erro ao salvar capítulos: "+e.message);return}}}
+await sb.from("book_categories").delete().eq("book_id",id);
+if(W.cats.length)await sb.from("book_categories").insert(W.cats.map(category_id=>({book_id:id,category_id})));
+const hasCh=draft?.length||W.nch;let msg="Livro salvo como rascunho.",ok=1,pubd=false;
+if(hasCh){PGO?.at(2);const {data:v,error:ve}=await sb.functions.invoke("verify-book",{body:{book_id:id,cover_b64:cb}});
+if(ve||!v){msg="Salvo, mas a verificação falhou. Tente publicar de novo em instantes.";ok=0}
+else if(v.status!=="approved"){msg="Salvo como rascunho: o filtro sinalizou "+[v.text_flagged&&"o texto",v.cover_flagged&&"a capa"].filter(Boolean).join(" e ")+" como possível conteúdo de IA. O livro fica em revisão.";ok=0}
+else if(want==="published"){const {error:pe}=await sb.from("books").update({status:"published"}).eq("id",id);if(pe){msg=pe.message;ok=0}else{pubd=true;msg=row.release_mode==="preorder"?"Livro agendado para "+row.release_date.split("-").reverse().join("/")+"!":"Livro publicado!"}}
+else msg="Livro salvo e verificado."}
+else if(want==="published"){msg="Envie o manuscrito para publicar.";ok=0}
+PGO?.at(3);say(msg,ok);
+lrm("nz-wiz:"+U.id+":novo");lrm("nz-wiz:"+U.id+":"+id);
+W.id=id;W.status=pubd?"published":"draft";W.nch=hasCh||0;if(cf){W.hasCover=true;if(row.cover_path)W.cover_src=row.cover_path}W._cover=null;draft=null;W._d=false;W._restored=0;
+history.replaceState(null,"","#/autora/livro/"+id);btn.disabled=false;return{msg,ok,id,pub:pubd}}
+
+let CST,CSB=false,CSCH=null,CSCV=null;
+const cloudSoon=()=>{clearTimeout(CST);CST=setTimeout(cloudSave,3000)};
+async function cloudSave(){
+if(CSB||!W||!U||!W._d||W.status==="published"||!W.title.trim())return;
+const w=W,say2=t=>{const e=$("#asv");if(e)e.textContent=t};CSB=true;
+try{say2("Salvando…");
+const kw=W.keywords.map(k=>k.trim()).filter(Boolean),cn=cats_name(),row={title:W.title.trim(),subtitle:W.subtitle.trim(),language:W.language,series_name:W.series_name.trim(),series_number:W.series_number?+W.series_number:null,edition:W.edition?+W.edition:null,author_first:W.author_first.trim(),author_last:W.author_last.trim(),pen_name:(W.author_first+" "+W.author_last).trim(),contributors:W.contributors.filter(c=>c.first||c.last),synopsis:W.synopsis.trim(),rights:W.rights,explicit:W.explicit,age_min:W.age_min===""?null:+W.age_min,age_max:W.age_max===""?null:+W.age_max,keywords:kw,tropes:kw.join(", ").slice(0,300),genre:cn,release_mode:W.release_mode,release_date:W.release_mode==="preorder"?(W.release_date||null):null,ai_use:W.ai_use,isbn:W.isbn.trim(),publisher:W.publisher.trim(),accessibility:W.accessibility};
+if(row.age_min!=null&&row.age_max!=null&&row.age_min>row.age_max)throw Error("a idade mínima é maior que a máxima");
+if(row.release_mode==="preorder"&&!row.release_date)throw Error("escolha a data de lançamento");
+if(draft?.length&&w.ms_name){row.manuscript_name=w.ms_name.slice(0,200);row.manuscript_at=w.ms_at||new Date().toISOString()}
+const cf=w._cover;if(cf&&cf!==CSCV&&cf.size<=7e6){try{row.cover_path=(await shrink(await fileURL(cf),"image/jpeg",360)).src}catch(x){}}
+let id=w.id;
+if(id){const r=await sb.from("books").update({...row,status:"draft"}).eq("id",id);if(r.error)throw r.error}
+else{const r=await sb.from("books").insert({...row,status:"draft"}).select("id").single();if(r.error)throw r.error;id=r.data.id;const old=lkey();w.id=id;try{localStorage.removeItem(old);localStorage.removeItem(old+":ch")}catch(e){}history.replaceState(null,"","#/autora/livro/"+id)}
+if(cf)CSCV=cf;
+if(draft?.length&&draft!==CSCH){const dr=draft;await sb.from("chapters").delete().eq("book_id",id);for(let i=0;i<dr.length;i+=4){const {error:e}=await sb.from("chapters").insert(dr.slice(i,i+4).map((c,k)=>({book_id:id,position:i+k+1,title:c.title,content:c.html})));if(e)throw e}CSCH=dr;w.nch=dr.length}
+await sb.from("book_categories").delete().eq("book_id",id);if(w.cats.length)await sb.from("book_categories").insert(w.cats.map(category_id=>({book_id:id,category_id})));
+say2("Salvo na nuvem às "+new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}))
+}catch(e){say2("Guardado neste aparelho. Não consegui salvar na nuvem: "+(e.message||e))}
+finally{CSB=false}}
+const cats_name=()=>{const c=W.cats.map(id=>CATS.find(x=>x.id===id)).find(x=>x&&x.kind!=="trope");return c?c.name:""};
+
+async function apainel(box){
+const {data:m}=await sb.rpc("metricas_autora"),L=m?.livros||[],ids=L.map(x=>x.id);
+const {data:rv}=ids.length?await sb.from("reviews").select("id,rating,body,reviewer,user_id,books(title)").in("book_id",ids).order("created_at",{ascending:false}).limit(20):{data:[]};
+const [{data:ach},{data:nf}]=await Promise.all([sb.from("achievements").select("title,created_at").order("created_at"),sb.rpc("author_followers",{p_author:U.id})]);
+const t=k=>L.reduce((a,x)=>a+(+x[k]||0),0),dm=Object.fromEntries((m?.dias||[]).map(d=>[d.d,+d.p])),days=Array.from({length:30},(_,i)=>{const d=new Date(Date.now()-(29-i)*864e5).toISOString().slice(0,10);return[d,dm[d]||0]}),mx=Math.max(1,...days.map(x=>x[1]));
+box.innerHTML=`<div class="stats"><div class="card"><b>${t("paginas")}</b><small>páginas lidas</small></div><div class="card"><b>${t("leitores")}</b><small>leitoras</small></div><div class="card"><b>${t("cliques")}</b><small>cliques nos livros</small></div><div class="card"><b>${t("avals")}</b><small>avaliações</small></div><div class="card"><b>${nf||0}</b><small>seguidoras</small></div><div class="card"><b>${(ach||[]).length}</b><small>conquistas</small></div></div>
+<div class="card"><b>Páginas lidas nos últimos 30 dias</b><div class="bars">${days.map(([d,p])=>`<i style="height:${Math.max(2,p/mx*100)}%" title="${d}: ${p} páginas"></i>`).join("")}</div><div class="sw"><small>${days[0][0].slice(5)}</small><small>${days[29][0].slice(5)}</small></div></div>
+<h2>Conquistas</h2>${(ach||[]).map(a=>`<div class="card"><b>🏆 ${esc(a.title)}</b><small>${dBR(String(a.created_at).slice(0,10))}</small></div>`).join("")||`<p class="empty">Suas conquistas aparecem aqui: primeiro livro, primeira avaliação, top 10 e mais.</p>`}<h2>Por livro</h2>${L.map(x=>`<div class="card"><a href="#/livro/${x.id}"><b>${esc(x.title)}</b></a><small>${x.cliques} cliques · ${x.leitores} leitoras · ${x.paginas} páginas lidas · ${x.media?x.media+" de 5":"sem notas"} (${x.avals})</small></div>`).join("")||`<p class="empty">Publique um livro para ver as métricas.</p>`}
+<h2>Avaliações</h2>${(rv||[]).map(r=>`<div class="card"><b>${stars(r.rating)}</b> <small>${esc(r.books?.title)} · ${esc(r.reviewer)}</small><p>${esc(r.body)}</p><button class="btn ghost red sm" data-rp="${r.id}">Denunciar avaliação</button></div>`).join("")||`<p class="empty">As avaliações dos seus livros aparecem aqui.</p>`}`;
+box.onclick=async e=>{const r=e.target.dataset.rp;if(r){const {error}=await sb.from("review_reports").insert({review_id:r});say(error?"Você já denunciou esta avaliação.":"Denúncia enviada.",!error)}}}
+
+function aconta(box){const L=P?.links||{};
+box.innerHTML=`<div class="card"><b>Perfil público</b><label>Nome<input id="pf" maxlength="60" value="${esc(P?.name)}"></label><label>Pronomes ou tratamento<input id="pr" maxlength="40" placeholder="ela/dela, autora" value="${esc(P?.pronouns)}"></label><label>Sobre você<textarea id="bi" maxlength="600">${esc(P?.bio)}</textarea></label><label>Instagram<input id="i1" placeholder="@usuario" value="${esc(L.instagram)}"></label><label>TikTok<input id="i2" placeholder="@usuario" value="${esc(L.tiktok)}"></label><label>Site ou outro link<input id="i3" placeholder="https://" value="${esc(L.site)}"></label><label>Foto (opcional)<input id="av" type="file" accept="image/*"></label><button class="btn" id="sv">Salvar perfil</button></div>
+<div class="card"><b>E-mail</b><small>Atual: ${esc(U.email)}</small><label>Novo e-mail<input id="ne" type="email" autocomplete="email"></label><button class="btn" id="se">Alterar e-mail</button></div>
+<div class="card"><b>Senha</b><label>Nova senha<input id="np" type="password" autocomplete="new-password" minlength="6"></label><label>Repita a nova senha<input id="np2" type="password" autocomplete="new-password"></label><button class="btn" id="sp">Alterar senha</button></div>
+${notifCard(true)}<div class="card"><b>Perfil de autora</b><small>Você pode voltar a ser só leitora. Seus livros ficam salvos, mas só você os vê enquanto estiver assim.</small><button class="btn ghost red" id="rl">Voltar a ser só leitora</button></div>`;
+notifBind();
+$("#sv").onclick=async()=>{const v=k=>$(k)?.value.trim(),u={name:v("#pf"),pronouns:v("#pr"),bio:v("#bi"),links:{instagram:v("#i1"),tiktok:v("#i2"),site:v("#i3")}};
+const f=$("#av").files[0];if(f){try{u.avatar=(await shrink(await fileURL(f),"image/jpeg",160)).src}catch(x){}}
+const {error}=await sb.from("profiles").update(u).eq("id",U.id);if(error)return say(error.message);say("Perfil salvo!",1);setUser(U)};
+$("#se").onclick=async()=>{const email=$("#ne").value.trim();if(!email)return say("Digite o novo e-mail.");const {error}=await sb.auth.updateUser({email});say(error?error.message:"Enviamos um link de confirmação. Confirme para concluir a troca.",!error)};
+$("#sp").onclick=async()=>{const p=$("#np").value;if(p.length<6)return say("A senha precisa ter pelo menos 6 caracteres.");if(p!==$("#np2").value)return say("As senhas não são iguais.");const {error}=await sb.auth.updateUser({password:p});if(!error){$("#np").value=$("#np2").value=""}say(error?error.message:"Senha alterada!",!error)};
+$("#rl").onclick=async()=>{if(!confirm("Voltar a ser só leitora?"))return;const {error}=await sb.rpc("set_my_role",{p_role:"reader"});if(error)return say(error.message);say("Agora você é leitora.",1);location.hash="#/perfil";setUser(U)}}
+async function escritora(id){
+const [{data:au},{data:bs},{data:fw},{data:n}]=await Promise.all([sb.from("profiles").select("id,name,pronouns,bio,links,avatar").eq("id",id).maybeSingle(),sb.from("books").select("id,title,pen_name,cover_path,release_date").eq("author_id",id).eq("status","published").order("created_at",{ascending:false}),sb.from("follows").select("author_id").eq("author_id",id).maybeSingle(),sb.rpc("author_followers",{p_author:id})]);
+if(!au){app.innerHTML=`<p class="empty">Página não encontrada.</p>`;return}
+let seg=!!fw,cnt=n||0;
+const draw=()=>{app.innerHTML=`<div class="card">${au.avatar?`<img class="av" src="${esc(au.avatar)}" alt="">`:""}<h1>${esc(au.name)}</h1>${au.pronouns?`<small>${esc(au.pronouns)}</small>`:""}<small>${cnt} ${cnt===1?"seguidora":"seguidoras"}</small><p>${esc(au.bio)}</p><p>${lk(au.links)}</p>${id===U.id?"":`<button class="btn" id="fl3">${seg?"Seguindo ✓":"Seguir"}</button>`}</div><h2>Livros</h2>${(bs||[]).length?`<div class="grid">${bs.map(card).join("")}</div>`:`<p class="empty">Ainda não há livros publicados.</p>`}`;
+if($("#fl3"))$("#fl3").onclick=async()=>{const {error}=seg?await sb.from("follows").delete().eq("author_id",id).eq("user_id",U.id):await sb.from("follows").insert({author_id:id});if(error)return say(error.message);seg=!seg;cnt+=seg?1:-1;say(seg?"Você está seguindo! Avisaremos sobre novidades.":"Você deixou de seguir.",1);draw()}};
+draw()}
+const NP=[["followed","Novos livros e lançamentos de autoras que sigo",0],["recs","Recomendações de livros parecidos",0],["a_reviews","Novas avaliações nos meus livros",1],["a_followers","Novas seguidoras",1],["a_ranking","Meus livros subindo no ranking",1],["a_achievements","Conquistas",1]];
+const notifCard=au=>`<div class="card"><b>Notificações</b>${NP.filter(x=>au||!x[2]).map(([k,t])=>`<label><input type="checkbox" data-np="${k}" ${P?.notif_prefs?.[k]===false?"":"checked"} style="width:auto;margin-right:.5rem">${t}</label>`).join("")}</div>`;
+function notifBind(){document.querySelectorAll("[data-np]").forEach(c=>c.onchange=async()=>{const np={...(P?.notif_prefs||{}),[c.dataset.np]:c.checked};const {error}=await sb.from("profiles").update({notif_prefs:np}).eq("id",U.id);if(error){c.checked=!c.checked;return say(error.message)}P.notif_prefs=np;say("Preferência salva.",1)})}
+const lk=L=>{const o=[],i=String(L?.instagram||"").replace(/^@/,""),t=String(L?.tiktok||"").replace(/^@/,"");if(i)o.push(`<a href="https://instagram.com/${encodeURIComponent(i)}" target="_blank" rel="noopener">Instagram</a>`);if(t)o.push(`<a href="https://tiktok.com/@${encodeURIComponent(t)}" target="_blank" rel="noopener">TikTok</a>`);if(/^https?:\/\//.test(L?.site||""))o.push(`<a href="${esc(L.site)}" target="_blank" rel="noopener">Site</a>`);return o.join(" · ")};
+function perfil(){const L=P?.links||{},au=P?.role==="author";
+app.innerHTML=`<h1>Meu perfil</h1><div class="card"><div class="sw"><span><b>${au?"Perfil de autora":"Perfil de leitora"}</b><small>${au?"Você pode publicar livros e ter uma página de autora.":"Ative o perfil de autora para publicar livros."}</small></span><button class="btn ghost sm" id="rl">${au?"Voltar a ser só leitora":"Quero publicar"}</button></div></div>
+<div class="card"><label>Nome<input id="pf" maxlength="60" value="${esc(P?.name)}"></label><label>Pronomes ou tratamento<input id="pr" maxlength="40" placeholder="ela/dela, autora, Sr., Sra." value="${esc(P?.pronouns)}"></label>
+${au?`<label>Sobre você<textarea id="bi" maxlength="600">${esc(P?.bio)}</textarea></label><label>Instagram<input id="i1" placeholder="@usuario" value="${esc(L.instagram)}"></label><label>TikTok<input id="i2" placeholder="@usuario" value="${esc(L.tiktok)}"></label><label>Site ou outro link<input id="i3" placeholder="https://" value="${esc(L.site)}"></label>`:""}
+<label>Foto (opcional)<input id="av" type="file" accept="image/*"></label><button class="btn" id="sv">Salvar perfil</button></div>${notifCard(au)}`;
+notifBind();
+$("#rl").onclick=async()=>{const {error}=await sb.rpc("set_my_role",{p_role:au?"reader":"author"});if(error)return say(error.message);say(au?"Agora você é leitora.":"Perfil de autora ativado!",1);setUser(U)};
+$("#sv").onclick=async()=>{const v=k=>$(k)?.value.trim(),u={name:v("#pf"),pronouns:v("#pr")};if(au){u.bio=v("#bi");u.links={instagram:v("#i1"),tiktok:v("#i2"),site:v("#i3")}}
+const f=$("#av").files[0];if(f){try{u.avatar=(await shrink(await fileURL(f),"image/jpeg",160)).src}catch(x){}}
+const {error}=await sb.from("profiles").update(u).eq("id",U.id);if(error)return say(error.message);say("Perfil salvo!",1);setUser(U)}}
+async function grifos(){const {data}=await sb.from("highlights").select("id,quote,fav,book_id,books(title),chapters(position)").order("created_at",{ascending:false});
+app.innerHTML=`<h1>Meus grifos</h1>`+((data||[]).length?data.map(h=>`<div class="card"><p>${h.fav?"★ ":""}“${esc(h.quote)}”</p><small>${esc(h.books?.title)}</small><a class="btn ghost sm" href="#/ler/${h.book_id}/${h.chapters?.position}">Abrir no livro</a> <button class="btn ghost red sm" data-d="${h.id}">Remover</button></div>`).join(""):`<p class="empty">Selecione um trecho enquanto lê para grifar ou favoritar.</p>`);
+app.onclick=async e=>{const d=e.target.dataset.d;if(d){await sb.from("highlights").delete().eq("id",d);grifos()}}}
+let goEnd=false;
+function route(){document.body.classList.remove("rdp");
+clearInterval(CDT);onscroll=null;app.onclick=null;onresize=null;onblur=null;onfocus=null;document.onvisibilitychange=null;document.body.classList.remove("shh");document.getElementById("shd")?.remove();document.onkeydown=null;document.oncopy=null;document.onselectionchange=null;document.querySelectorAll(".tb,.sheet").forEach(x=>x.remove());nav();window.scrollTo(0,0);
+if(!U)return entrar();
+const [a,b,c]=location.hash.slice(2).split("/");
+({livro:()=>livro(b,c),ler:()=>ler(b,c),biblioteca,grifos,livros:()=>livros(b),escritora:()=>escritora(b),autora:()=>autora(b||"biblioteca",c),autor:()=>autora("biblioteca"),painel:()=>autora("painel"),perfil:()=>P?.role==="author"?autora("conta"):perfil()}[a]||home)()}
+let UL=null;async function setUser(u,auth){if(auth&&u&&UL===u.id)return;UL=u?.id||null;U=u||null;P=null;if(U){const r=await sb.from("profiles").select("*").eq("id",U.id).maybeSingle();P=r.data;if(!CH)CH=sb.channel("nf").on("postgres_changes",{event:"INSERT",schema:"public",table:"notifications",filter:`user_id=eq.${U.id}`},x=>{badge();say(x.new.title,1)}).subscribe()}if(!U&&CH){sb.removeChannel(CH);CH=null}route()}
+addEventListener("hashchange",route);
+sb.auth.onAuthStateChange((ev,s)=>{if(ev==="INITIAL_SESSION"||ev==="SIGNED_IN"||ev==="SIGNED_OUT")setTimeout(()=>setUser(s?.user,1),0)});
+</script>
+</body>
+</html>
